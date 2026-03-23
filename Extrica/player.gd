@@ -10,6 +10,8 @@ var look_dir : Vector2
 var camera_sens = 50
 var cap_mouse = false
 func _physics_process(delta: float) -> void:
+	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -46,3 +48,5 @@ func _rotate_camera(delta:float, sens_mod:float = 1.0):
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.5)
 	look_dir = Vector2.ZERO
 	
+func _check_for_cam() -> float:
+	if ray.collide_with_areas

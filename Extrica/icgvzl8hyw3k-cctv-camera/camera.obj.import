@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://f6meg1658lfs"
+path="res://.godot/imported/camera.obj-43a764565d69b15d23523212cb3cd916.mesh"
+
+[deps]
+
+files=["res://.godot/imported/camera.obj-43a764565d69b15d23523212cb3cd916.mesh"]
+
+source_file="res://icgvzl8hyw3k-cctv-camera/camera.obj"
+dest_files=["res://.godot/imported/camera.obj-43a764565d69b15d23523212cb3cd916.mesh", "res://.godot/imported/camera.obj-43a764565d69b15d23523212cb3cd916.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
