@@ -4,9 +4,11 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D
-@onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var ray: RayCast3D = $RayCast3D
 
-
+var look_dir : Vector2 
+var camera_sens = 50
+var cap_mouse = false
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -23,6 +25,24 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	
-
+	if Input.is_action_just_pressed("pause"):
+		cap_mouse = !cap_mouse
+		
+		if cap_mouse:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_rotate_camera(delta)
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		look_dir = event.relative * 0.01
+		
+func _rotate_camera(delta:float, sens_mod:float = 1.0):
+	#var input = Input.get_vector("look_left","look_right","look_down","look_up")
+	#look_dir += input
+	rotation.y -= look_dir.x * camera_sens * delta
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.5)
+	look_dir = Vector2.ZERO
+	
