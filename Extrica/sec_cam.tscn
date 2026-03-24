@@ -3,23 +3,41 @@
 [ext_resource type="ArrayMesh" uid="uid://f6meg1658lfs" path="res://icgvzl8hyw3k-cctv-camera/camera.obj" id="1_2o1ua"]
 [ext_resource type="Script" uid="uid://baiwmgto741sy" path="res://sec_cam.gd" id="1_8ova0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ova0"]
+albedo_color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6shl"]
+albedo_color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6p2a"]
+albedo_color = Color(0.47058824, 0.47058824, 0.47058824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhiev"]
+albedo_color = Color(0.8329021, 0.83290213, 0.83290213, 1)
+metallic = 1.0
+emission = Color(0.4364965, 0.61540693, 1, 1)
+emission_energy_multiplier = 3.4
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ova0"]
 radius = 0.6743646
 
-[node name="Node3D" type="Area3D" unique_id=670971705]
+[node name="Node3D" type="Area3D" unique_id=670971705 groups=["cams"]]
 collision_layer = 4
 script = ExtResource("1_8ova0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=107147461]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = ExtResource("1_2o1ua")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ova0")
+surface_material_override/1 = SubResource("StandardMaterial3D_u6shl")
+surface_material_override/2 = SubResource("StandardMaterial3D_a6p2a")
+surface_material_override/3 = SubResource("StandardMaterial3D_mhiev")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=502396282]
 transform = Transform3D(1.5786884, 0, 0, 0, 0.022463843, 4.623821, 0, -91.91938, 0.0011299056, 0, 0.031719446, 0.8046479)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1179686132]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.5565882)
-current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1029420375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013897419, 0, 0.008194923)

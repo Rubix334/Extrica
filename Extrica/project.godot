@@ -15,6 +15,15 @@ run/main_scene="uid://bffs0yqr2jdrx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerManager="*uid://ca17ijolul2ti"
+SecCamManager="*uid://kf28eduyy2p2"
+
+[global_group]
+
+cams=""
+
 [input]
 
 crouch={

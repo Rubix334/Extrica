@@ -1,15 +1,25 @@
 extends CharacterBody3D
-
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D
-@onready var ray: RayCast3D = $RayCast3D
+@onready var ray: RayCast3D = $Camera3D/RayCast3D
+
 
 var look_dir : Vector2 
 var camera_sens = 50
 var cap_mouse = false
+
+signal looking_at_cam
+signal not_looking_at_cam
 func _physics_process(delta: float) -> void:
+	
+	if _check_for_cam():
+		#print("looking at camera")
+		emit_signal("looking_at_cam")
+	else:
+		emit_signal("not_looking_at_cam")
 	
 	
 	# Add the gravity.
@@ -49,4 +59,9 @@ func _rotate_camera(delta:float, sens_mod:float = 1.0):
 	look_dir = Vector2.ZERO
 	
 func _check_for_cam() -> float:
-	if ray.collide_with_areas
+	if ray.get_collider() != null:
+		if ray.get_collider().is_in_group("cams"):
+			return true
+		else:
+			return false
+	return false

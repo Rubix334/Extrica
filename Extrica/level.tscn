@@ -45,5 +45,6 @@ size = Vector3(1, 9.261658, 1)
 [node name="Camera3D" type="Camera3D" parent="." unique_id=565244860]
 transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188355, 0.306446, 0.9851621, -0.05529552, 0.16247396, -19.38591, 11.244355, 0)
 
-[node name="sec_cam" parent="." unique_id=782250356 instance=ExtResource("3_oi3di")]
+[node name="sec_cam" parent="." unique_id=782250356 node_paths=PackedStringArray("player") instance=ExtResource("3_oi3di")]
 transform = Transform3D(1, 0, 0, 0, 0.9772718, -0.21199004, 0, 0.21199004, 0.9772718, -8.540968, 8.12883, -17.526684)
+player = NodePath("../Player")
