@@ -44,8 +44,10 @@ func _physics_process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	_rotate_camera(delta)
-	move_and_slide()
+	
+	if camera.current:
+		_rotate_camera(delta)
+		move_and_slide()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

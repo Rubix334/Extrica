@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://f6meg1658lfs" path="res://icgvzl8hyw3k-cctv-camera/camera.obj" id="1_2o1ua"]
 [ext_resource type="Script" uid="uid://baiwmgto741sy" path="res://sec_cam.gd" id="1_8ova0"]
+[ext_resource type="PackedScene" uid="uid://vlk4s8elfyj8" path="res://camHUD.tscn" id="2_u6shl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ova0"]
 albedo_color = Color(0.47058824, 0.47058824, 0.47058824, 1)
@@ -33,12 +34,15 @@ surface_material_override/1 = SubResource("StandardMaterial3D_u6shl")
 surface_material_override/2 = SubResource("StandardMaterial3D_a6p2a")
 surface_material_override/3 = SubResource("StandardMaterial3D_mhiev")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=502396282]
-transform = Transform3D(1.5786884, 0, 0, 0, 0.022463843, 4.623821, 0, -91.91938, 0.0011299056, 0, 0.031719446, 0.8046479)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1179686132]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.5565882)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=502396282]
+transform = Transform3D(-1.5786884, 8.035848e-06, -9.8779485e-11, 0, 0.022463843, 4.623821, 1.3801332e-07, 91.91938, -0.0011299056, -2.168607e-08, 0.031719446, -0.24805975)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1029420375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013897419, 0, 0.008194923)
 shape = SubResource("SphereShape3D_8ova0")
+
+[node name="HUD" parent="." unique_id=1859975273 instance=ExtResource("2_u6shl")]
+visible = false

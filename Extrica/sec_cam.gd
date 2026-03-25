@@ -1,10 +1,14 @@
 extends Node3D
 class_name sec_cam
 var look_dir : Vector2 
-var camera_sens = player.camera_sens
+
 @export var player:Player
 @onready var body: MeshInstance3D = $MeshInstance3D
 @onready var camera: Camera3D = $Camera3D
+@onready var ray: RayCast3D = $Camera3D/RayCast3D
+@onready var hud: Control = $HUD
+
+var camera_sens = 50
 
 var switchable:bool
 var controlled:bool = false
@@ -22,6 +26,11 @@ func _process(delta: float) -> void:
 			camera.make_current()
 			controlled = true
 	
+	if controlled:
+		_rotate_camera(delta)
+		hud.visible = true
+	else:
+		hud.visible = false
 	
 	pass
 

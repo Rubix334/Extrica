@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://vlk4s8elfyj8"]
+
+[ext_resource type="Script" uid="uid://co7bg5tpaepey" path="res://cam_hud.gd" id="1_6f24i"]
+[ext_resource type="Texture2D" uid="uid://d2f7tuxcnkwel" path="res://RedDot.png" id="2_c575w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkj6n"]
+font_size = 50
+
+[sub_resource type="Gradient" id="Gradient_h21rv"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_we87s"]
+gradient = SubResource("Gradient_h21rv")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jq0tr"]
+frames = 2
+frame_0/texture = ExtResource("2_c575w")
+frame_1/texture = SubResource("GradientTexture1D_we87s")
+frame_1/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ld0qf"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_6f24i"]
+font_size = 50
+
+[node name="Control" type="Control" unique_id=1859975273]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6f24i")
+
+[node name="Border" type="Control" parent="." unique_id=881836621]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="Border" unique_id=1703663909]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 608.0
+offset_right = 288.0
+offset_bottom = 616.0
+
+[node name="ColorRect" type="ColorRect" parent="Border" unique_id=990687823]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 40.0
+
+[node name="ColorRect3" type="ColorRect" parent="Border" unique_id=2099664573]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 287.2
+offset_bottom = 40.0
+rotation = 1.5707964
+
+[node name="ColorRect4" type="ColorRect" parent="Border" unique_id=1839608271]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 376.0
+offset_right = 287.2
+offset_bottom = 384.0
+rotation = 1.5707964
+
+[node name="ColorRect5" type="ColorRect" parent="Border" unique_id=1803945057]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 32.0
+offset_right = 1351.2
+offset_bottom = 40.0
+rotation = 1.5707964
+
+[node name="ColorRect6" type="ColorRect" parent="Border" unique_id=1706411486]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 376.0
+offset_right = 1351.2
+offset_bottom = 384.0
+rotation = 1.5707964
+
+[node name="ColorRect7" type="ColorRect" parent="Border" unique_id=58988918]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 32.0
+offset_right = 1112.0
+offset_bottom = 40.0
+
+[node name="ColorRect8" type="ColorRect" parent="Border" unique_id=1820126285]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 608.0
+offset_right = 1112.0
+offset_bottom = 616.0
+
+[node name="Border2" type="Control" parent="." unique_id=1375001418]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.99997
+offset_top = -52.0
+offset_right = -32.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.12, 0.15)
+
+[node name="ColorRect2" type="ColorRect" parent="Border2" unique_id=1847388056]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 608.0
+offset_right = 288.0
+offset_bottom = 616.0
+
+[node name="ColorRect" type="ColorRect" parent="Border2" unique_id=1901602912]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 40.0
+
+[node name="ColorRect3" type="ColorRect" parent="Border2" unique_id=420731870]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 287.2
+offset_bottom = 40.0
+rotation = 1.5707964
+
+[node name="ColorRect4" type="ColorRect" parent="Border2" unique_id=609487328]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 376.0
+offset_right = 287.2
+offset_bottom = 384.0
+rotation = 1.5707964
+
+[node name="ColorRect5" type="ColorRect" parent="Border2" unique_id=15316585]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 32.0
+offset_right = 1351.2
+offset_bottom = 40.0
+rotation = 1.5707964
+
+[node name="ColorRect6" type="ColorRect" parent="Border2" unique_id=192288275]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 376.0
+offset_right = 1351.2
+offset_bottom = 384.0
+rotation = 1.5707964
+
+[node name="ColorRect7" type="ColorRect" parent="Border2" unique_id=694937459]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 32.0
+offset_right = 1112.0
+offset_bottom = 40.0
+
+[node name="ColorRect8" type="ColorRect" parent="Border2" unique_id=1420229575]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 608.0
+offset_right = 1112.0
+offset_bottom = 616.0
+
+[node name="REC" type="Label" parent="." unique_id=1290196440]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 220.0
+offset_bottom = 125.0
+text = "REC"
+label_settings = SubResource("LabelSettings_fkj6n")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1088212125]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 66.0
+offset_right = 837.0
+offset_bottom = 786.0
+scale = Vector2(0.08493206, 0.08214379)
+texture = SubResource("AnimatedTexture_jq0tr")
+
+[node name="name" type="Label" parent="." unique_id=1852513913]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 55.0
+offset_right = 1059.0
+offset_bottom = 124.0
+text = "CAM 1"
+label_settings = SubResource("LabelSettings_ld0qf")
+
+[node name="time_label" type="Label" parent="." unique_id=1617875613]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -85.0
+offset_right = 99.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_6f24i")
+
+[node name="Timer" type="Timer" parent="." unique_id=1437921994]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
