@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://iee2u0lw37i4" path="res://level.gd" id="1_vonw3"]
 [ext_resource type="PackedScene" uid="uid://bop3dp2337m7x" path="res://sec_cam.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="4_0b4ue"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u52ul"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -48,3 +49,6 @@ transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188
 [node name="sec_cam" parent="." unique_id=782250356 node_paths=PackedStringArray("player") instance=ExtResource("3_oi3di")]
 transform = Transform3D(1, 0, 0, 0, 0.9772718, -0.21199004, 0, 0.21199004, 0.9772718, -8.540968, 8.12883, -17.526684)
 player = NodePath("../Player")
+
+[node name="Node3D" parent="." unique_id=2036158031 instance=ExtResource("4_0b4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.478322, 1.4261882, 0)

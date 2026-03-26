@@ -6,12 +6,14 @@ const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var look_dir : Vector2 
 var camera_sens = 50
 var cap_mouse = false
 var crouched = false
+var sprinting = false
 
 signal looking_at_cam
 signal not_looking_at_cam
@@ -27,8 +29,10 @@ func _physics_process(delta: float) -> void:
 	if not crouched:
 		if Input.is_action_pressed("sprint"):
 			SPEED = 10
+			sprinting = true
 		if Input.is_action_just_released("sprint"):
 			SPEED = 5.0
+			sprinting = false
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -40,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		head_bob()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -92,3 +97,10 @@ func crouch():
 			collision.shape.height = 2
 			collision.position.y += 0.5
 			crouched = false
+
+func head_bob():
+	animation_player.play("bob")
+	if not sprinting:
+		animation_player.speed_scale = 1
+	else:
+		animation_player.speed_scale = 1.5
