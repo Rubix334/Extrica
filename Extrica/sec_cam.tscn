@@ -38,7 +38,7 @@ surface_material_override/3 = SubResource("StandardMaterial3D_mhiev")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.5565882)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=502396282]
-transform = Transform3D(-1.5786884, 8.035848e-06, -9.8779485e-11, 0, 0.022463843, 4.623821, 1.3801332e-07, 91.91938, -0.0011299056, -2.168607e-08, 0.031719446, -0.24805975)
+transform = Transform3D(-1.5786884, 8.035848e-06, -9.8779485e-11, 0, 0.022463843, 4.623821, 1.3801332e-07, 91.91938, -0.0011299056, -2.168607e-08, -0.01077956, -0.24805975)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1029420375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013897419, 0, 0.008194923)

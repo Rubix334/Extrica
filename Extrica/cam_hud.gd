@@ -13,7 +13,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time_label.text = "00:"+str(min)+":"+str(sec)
+	if sec > 9:
+		if min > 9:
+			time_label.text = "00:"+str(min)+":"+str(sec)
+		time_label.text = "00:0"+str(min)+":"+str(sec)
+	elif not sec > 9:
+		if min > 9:
+			time_label.text = "00:"+str(min)+":0"+str(sec)
+		time_label.text = "00:0"+str(min)+":0"+str(sec)
 
 
 func _on_timer_timeout() -> void:

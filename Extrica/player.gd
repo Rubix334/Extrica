@@ -1,15 +1,17 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
+@onready var collision: CollisionShape3D = $CollisionShape3D
 
 
 var look_dir : Vector2 
 var camera_sens = 50
 var cap_mouse = false
+var crouched = false
 
 signal looking_at_cam
 signal not_looking_at_cam
@@ -21,13 +23,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		emit_signal("not_looking_at_cam")
 	
-	
+	##sprinting
+	if not crouched:
+		if Input.is_action_pressed("sprint"):
+			SPEED = 10
+		if Input.is_action_just_released("sprint"):
+			SPEED = 5.0
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -37,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	##remove cursor
 	if Input.is_action_just_pressed("pause"):
 		cap_mouse = !cap_mouse
 		
@@ -45,7 +53,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+	#only move when in player POV
 	if camera.current:
+		crouch()
 		_rotate_camera(delta)
 		move_and_slide()
 
@@ -67,3 +77,18 @@ func _check_for_cam() -> float:
 		else:
 			return false
 	return false
+
+func crouch():
+	if Input.is_action_just_pressed("crouch"):
+		if not crouched:
+			SPEED = 2.5
+			camera.position.y -= 1
+			collision.shape.height = 1
+			collision.position.y -= 0.5
+			crouched = true
+		else:
+			SPEED = 5.0
+			camera.position.y += 1
+			collision.shape.height = 2
+			collision.position.y += 0.5
+			crouched = false

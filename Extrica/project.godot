@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerManager="*uid://ca17ijolul2ti"
 SecCamManager="*uid://kf28eduyy2p2"
+Global="*uid://ca17ijolul2ti"
 
 [global_group]
 
