@@ -14,7 +14,13 @@ size = Vector3(0.8, 1.8, 0.8)
 radius = 0.63378906
 height = 1.9101563
 
-[node name="Node3D" type="CharacterBody3D" unique_id=2036158031]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4gyqm"]
+margin = 0.0
+points = PackedVector3Array(0, 1, 0, 10, 3, 3, 10, 0, 3, 10, 0, -3, 10, 3, -3)
+
+[node name="EnemyNPC" type="CharacterBody3D" unique_id=2036158031]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
 script = ExtResource("1_4gyqm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2019432292]
@@ -23,3 +29,9 @@ mesh = SubResource("BoxMesh_7xaro")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1790778452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0048828125, 0)
 shape = SubResource("CapsuleShape3D_7k104")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=832934447]
+shape = SubResource("ConvexPolygonShape3D_4gyqm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=885817445]
+debug_enabled = true

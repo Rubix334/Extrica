@@ -44,7 +44,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		head_bob()
+		if camera.current:
+			head_bob()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -63,6 +64,9 @@ func _physics_process(delta: float) -> void:
 		crouch()
 		_rotate_camera(delta)
 		move_and_slide()
+		$Crosshair.visible = true
+	else:
+		$Crosshair.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
