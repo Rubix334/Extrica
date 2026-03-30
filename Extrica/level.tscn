@@ -33,23 +33,9 @@ environment = SubResource("Environment_oi3di")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=979623761]
-navigation_mesh = SubResource("NavigationMesh_0b4ue")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1049071678]
-use_collision = true
-size = Vector3(500, 1, 500)
-
-[node name="pillar" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1299295948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.541185, 4.7992086, -18.89188)
-size = Vector3(1, 9.261658, 1)
-
-[node name="pillar2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1350853865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.547564, 16.53938)
-size = Vector3(1, 9.261658, 1)
-
 [node name="Player" parent="." unique_id=277564241 instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1329927, 0)
+collision_mask = 3
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=565244860]
 transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188355, 0.306446, 0.9851621, -0.05529552, 0.16247396, -19.38591, 11.244355, 0)
@@ -61,3 +47,23 @@ player = NodePath("../Player")
 [node name="Enemy" parent="." unique_id=2036158031 node_paths=PackedStringArray("navigationMap") instance=ExtResource("4_0b4ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.478322, 1.4261882, 0)
 navigationMap = NodePath("../NavigationRegion3D")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=979623761]
+navigation_mesh = SubResource("NavigationMesh_0b4ue")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1049071678]
+use_collision = true
+collision_layer = 2
+size = Vector3(500, 1, 500)
+
+[node name="pillar" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1299295948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.541185, 4.7992086, -18.89188)
+use_collision = true
+collision_layer = 2
+size = Vector3(1, 9.261658, 1)
+
+[node name="pillar2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1350853865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1027675, 16.53938)
+use_collision = true
+collision_layer = 2
+size = Vector3(1, 9.261658, 1)
