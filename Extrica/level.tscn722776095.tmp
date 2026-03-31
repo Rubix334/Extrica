@@ -74,6 +74,5 @@ size = Vector3(1, 9.261658, 1)
 [node name="Path3D" type="Path3D" parent="." unique_id=1132545730]
 curve = SubResource("Curve3D_0b4ue")
 
-[node name="Enemy" parent="Path3D" unique_id=2036158031 node_paths=PackedStringArray("navimap") instance=ExtResource("4_0b4ue")]
+[node name="Enemy" parent="Path3D" unique_id=2036158031 instance=ExtResource("4_0b4ue")]
 transform = Transform3D(0.008668271, -0.0007993776, 0.99996215, 0, 0.9999997, 0.00079940766, -0.99996245, -6.929482e-06, 0.008668268, -13.456046, 1.0695257, 0.044928312)
-navimap = NodePath("../../NavigationRegion3D")
