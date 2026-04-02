@@ -3,6 +3,7 @@ extends PathFollow3D
 @onready var navi_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var fov: Area3D = $CharacterBody3D/FOV
 var player_detected = false
+@onready var body: CharacterBody3D = $CharacterBody3D
 
 @export var player:Player
 @export var navimap:NavigationRegion3D
@@ -13,6 +14,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	patrol(delta)
+
+	body.move_and_slide()
 	pass
 
 func patrol(delta:float):
@@ -23,6 +26,7 @@ func patrol(delta:float):
 		follow_path(delta)
 	else:
 		last_pos = global_position
+		hunt_player()
 
 	
 	
@@ -30,8 +34,12 @@ func hunt_player():
 	##follow player;if player is out of view
 	##start a timer on which timeout will call return_to_patrol()
 	navi_agent.set_target_position(player.global_position)
+	var destination = navi_agent.get_next_path_position()
+	var local_destination = destination - global_position
+	var direction = local_destination.normalized()
+	body.velocity = direction * speed
 	
-	pass
+
 func return_to_patrol():
 	##player is not detected; return to last position of patrolling
 	##change state to patrol
