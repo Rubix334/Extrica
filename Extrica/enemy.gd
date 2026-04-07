@@ -33,11 +33,15 @@ func patrol(delta:float):
 func hunt_player():
 	##follow player;if player is out of view
 	##start a timer on which timeout will call return_to_patrol()
+	
 	navi_agent.set_target_position(player.global_position)
 	var destination = navi_agent.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	body.velocity = direction * speed
+	look_at(direction)
+	if player_detected == false:
+		pass
 	
 
 func return_to_patrol():
@@ -60,4 +64,6 @@ func detect_player(body: Node3D) -> void:
 	if body is Player:
 		print("Player Detected")
 		player_detected = true
-	player_detected = false
+	else:
+		player_detected = false
+		print("Player out of view")
