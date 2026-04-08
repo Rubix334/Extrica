@@ -23,13 +23,6 @@ vertices = PackedVector3Array(-9.5, 1, -20, -8.5, 1, -20, -8.5, 1, -249.5, -9.75
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(6, 1, 2), PackedInt32Array(6, 2, 7), PackedInt32Array(7, 2, 8), PackedInt32Array(8, 2, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 13, 12), PackedInt32Array(12, 13, 14), PackedInt32Array(12, 14, 5), PackedInt32Array(5, 3, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(15, 7, 17), PackedInt32Array(17, 7, 8), PackedInt32Array(17, 8, 18), PackedInt32Array(18, 19, 17), PackedInt32Array(15, 16, 11), PackedInt32Array(11, 16, 10), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(22, 23, 14), PackedInt32Array(14, 13, 22), PackedInt32Array(20, 21, 24), PackedInt32Array(24, 19, 20), PackedInt32Array(20, 19, 18), PackedInt32Array(20, 18, 25)]
 geometry_parsed_geometry_type = 0
 
-[sub_resource type="Curve3D" id="Curve3D_0b4ue"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -13.456046, 1.0695257, 0.044928312, 0, 0, 0, 0, 0, 0, -28.629528, 1.0573955, -0.08660364),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
 [node name="Node3D" type="Node3D" unique_id=828185774]
 script = ExtResource("1_vonw3")
 
@@ -50,12 +43,17 @@ transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188
 transform = Transform3D(1, 0, 0, 0, 0.9772718, -0.21199004, 0, 0.21199004, 0.9772718, -8.540968, 8.12883, -17.526684)
 player = NodePath("../Player")
 
+[node name="Enemy" parent="." unique_id=2036158031 node_paths=PackedStringArray("player") instance=ExtResource("4_0b4ue")]
+transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
+player = NodePath("../Player")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=979623761]
 navigation_mesh = SubResource("NavigationMesh_0b4ue")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1049071678]
 use_collision = true
 collision_layer = 2
+collision_mask = 3
 size = Vector3(500, 1, 500)
 
 [node name="pillar" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1299295948]
@@ -69,11 +67,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1027675, 16.53938)
 use_collision = true
 collision_layer = 2
 size = Vector3(1, 9.261658, 1)
-
-[node name="Path3D" type="Path3D" parent="." unique_id=1132545730]
-curve = SubResource("Curve3D_0b4ue")
-
-[node name="Enemy" parent="Path3D" unique_id=2036158031 node_paths=PackedStringArray("player", "navimap") instance=ExtResource("4_0b4ue")]
-transform = Transform3D(0.008668271, -0.0007993776, 0.99996215, 0, 0.9999997, 0.00079940766, -0.99996245, -6.929482e-06, 0.008668268, -13.456046, 1.0695257, 0.044928312)
-player = NodePath("../../Player")
-navimap = NodePath("../../NavigationRegion3D")
