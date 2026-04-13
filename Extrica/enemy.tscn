@@ -17,6 +17,14 @@ height = 1.9101563
 [node name="EnemyNPC" type="CharacterBody3D" unique_id=2018420786]
 script = ExtResource("1_4gyqm")
 
+[node name="attentionMarker" type="Label3D" parent="." unique_id=878825481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4548774, 0)
+visible = false
+billboard = 1
+text = "?
+"
+font_size = 100
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2019432292]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_7xaro")
@@ -26,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0048828125, 0)
 shape = SubResource("CapsuleShape3D_7k104")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1887829794]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38133144, 0)
+transform = Transform3D(1, 0, 0, 0, 2.3140216, 0, 0, 0, 1, 0, 0.38133144, 0)
 target_position = Vector3(0, 0, -10)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=885817445]

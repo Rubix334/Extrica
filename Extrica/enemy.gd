@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_ray: RayCast3D = $RayCast3D
+@onready var attention_marker: Label3D = $attentionMarker
 
 # --------------------
 # CONFIG
@@ -32,6 +33,7 @@ var return_position: Vector3
 var target: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var update_timer := 0.0
+var spot = false
 
 # --------------------
 # READY
@@ -54,6 +56,7 @@ func _physics_process(delta: float) -> void:
 		State.ATTACK:      _state_attack()
 		State.RETURN:      _state_return(delta)
 	
+	
 	_looking()
 	_apply_gravity(delta)
 	move_and_slide()
@@ -63,6 +66,7 @@ func _physics_process(delta: float) -> void:
 # --------------------
 func _state_idle() -> void:
 	if _can_see_player():
+		
 		_enter_state(State.CHASE)
 
 func _state_patrol(delta: float) -> void:
@@ -78,7 +82,7 @@ func _state_patrol(delta: float) -> void:
 		_walk_to(agent.get_next_path_position(), speed_walk)
 
 	if _can_see_player():
-		_enter_state(State.CHASE)
+		noticed()
 
 func _state_investigate(delta: float) -> void:
 	if agent.is_navigation_finished():
@@ -93,9 +97,17 @@ func _state_investigate(delta: float) -> void:
 		_walk_to(agent.get_next_path_position(), speed_walk)
 
 	if _can_see_player():
-		_enter_state(State.CHASE)
+		noticed()
+		#attention_marker.visible = true
+		#await get_tree().create_timer(1.5).timeout
+		#_enter_state(State.CHASE)
 
 func _state_chase(delta: float) -> void:
+	if spot == false:
+		Global.spotted += 1
+		spot = true
+	
+	attention_marker.visible = false
 	if not target:
 		_enter_state(State.RETURN)
 		return
@@ -119,7 +131,10 @@ func _state_return(delta: float) -> void:
 	if agent.is_navigation_finished():
 		_enter_state(State.PATROL)
 	elif _can_see_player():
-		_enter_state(State.CHASE)
+		noticed()
+		#attention_marker.visible = true
+		#await get_tree().create_timer(1.5).timeout
+		#_enter_state(State.CHASE)
 	else:
 		_walk_to(agent.get_next_path_position(), speed_walk)
 
@@ -130,9 +145,11 @@ func _enter_state(new_state: State) -> void:
 	state = new_state
 	match state:
 		State.PATROL:
+			spot = false
 			patrol_timer = 0
 			_go_to_next_patrol_point()
 		State.INVESTIGATE:
+			spot = false
 			investigate_timer = 0.0
 			agent.set_target_position(investigate_position)
 		State.CHASE, State.INVESTIGATE:
@@ -211,6 +228,13 @@ func _looking() -> void:
 	var new_dir = ray_forward.slerp(to_player, SMOOTHING_FACTOR).normalized()
 	vision_ray.look_at(vision_ray.global_transform.origin + new_dir, Vector3.UP)
 
+func noticed() -> void:
+	attention_marker.visible = true
+	await get_tree().create_timer(1.5).timeout
+	if _can_see_player():
+		_enter_state(State.CHASE)
+	else:
+		attention_marker.visible = false
 # --------------------
 # SOUND
 # --------------------

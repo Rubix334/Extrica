@@ -1,7 +1,9 @@
 extends CharacterBody3D
 class_name Player
 
-var SPEED = 5.0
+@export var SPEED = 5.0
+@export var camera_sens = 50
+
 const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
@@ -10,13 +12,13 @@ const JUMP_VELOCITY = 4.5
 
 
 var look_dir : Vector2 
-var camera_sens = 50
 var cap_mouse = false
 var crouched = false
 var sprinting = false
 
 signal looking_at_cam
 signal not_looking_at_cam
+
 func _physics_process(delta: float) -> void:
 	
 	if _check_for_cam():
@@ -46,6 +48,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		if camera.current:
 			head_bob()
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -90,12 +93,14 @@ func _check_for_cam() -> float:
 func crouch():
 	if Input.is_action_just_pressed("crouch"):
 		if not crouched:
+			animation_player.stop()
 			SPEED = 2.5
 			camera.position.y -= 1
 			collision.shape.height = 1
 			collision.position.y -= 0.5
 			crouched = true
 		else:
+			animation_player.stop()
 			SPEED = 5.0
 			camera.position.y += 1
 			collision.shape.height = 2
@@ -103,8 +108,11 @@ func crouch():
 			crouched = false
 
 func head_bob():
-	animation_player.play("bob")
-	if not sprinting:
-		animation_player.speed_scale = 1
+	if not crouched:
+		animation_player.play("bob")
+		if not sprinting:
+			animation_player.speed_scale = 1
+		else:
+			animation_player.speed_scale = 1.5
 	else:
-		animation_player.speed_scale = 1.5
+		animation_player.play("crouchbob")
