@@ -33,7 +33,6 @@ var return_position: Vector3
 var target: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var update_timer := 0.0
-var spot = false
 
 # --------------------
 # READY
@@ -103,10 +102,6 @@ func _state_investigate(delta: float) -> void:
 		#_enter_state(State.CHASE)
 
 func _state_chase(delta: float) -> void:
-	if spot == false:
-		Global.spotted += 1
-		spot = true
-	
 	attention_marker.visible = false
 	if not target:
 		_enter_state(State.RETURN)
@@ -145,11 +140,9 @@ func _enter_state(new_state: State) -> void:
 	state = new_state
 	match state:
 		State.PATROL:
-			spot = false
 			patrol_timer = 0
 			_go_to_next_patrol_point()
 		State.INVESTIGATE:
-			spot = false
 			investigate_timer = 0.0
 			agent.set_target_position(investigate_position)
 		State.CHASE, State.INVESTIGATE:
@@ -213,6 +206,7 @@ func _apply_gravity(delta: float) -> void:
 # --------------------
 func _can_see_player() -> bool:
 	return target and vision_ray.is_colliding() and vision_ray.get_collider() == target
+	
 
 func _looking() -> void:
 	if not target:

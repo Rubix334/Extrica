@@ -7,6 +7,7 @@ var look_dir : Vector2
 @onready var camera: Camera3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 @onready var hud: Control = $HUD
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 var camera_sens = 50
 
@@ -22,9 +23,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if switchable:
-		if Input.is_action_just_pressed("hack"): #hack = Q
-			camera.make_current()
-			controlled = true
+		if Input.is_action_pressed("hack") and not controlled: #hack = Q
+			progress_bar.visible = true
+			progress_bar.value += 1
+			if progress_bar.value >= 100:
+				camera.make_current()
+				controlled = true
+		if Input.is_action_just_released("hack"):
+			progress_bar.visible = false
+			progress_bar.value = 0
 	
 	if controlled:
 		_rotate_camera(delta)
@@ -52,3 +59,4 @@ func _rotate_camera(delta:float, sens_mod:float = 1.0):
 	rotation.y -= look_dir.x * camera_sens * delta
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.5)
 	look_dir = Vector2.ZERO
+	

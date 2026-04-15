@@ -46,3 +46,19 @@ shape = SubResource("SphereShape3D_8ova0")
 
 [node name="HUD" parent="." unique_id=1859975273 instance=ExtResource("2_u6shl")]
 visible = false
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=814277150]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = 49.0
+offset_right = 67.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+show_percentage = false

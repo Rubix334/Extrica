@@ -46,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		AudioManager.play_sfx("footsteps")
 		if camera.current:
 			head_bob()
 			
@@ -96,15 +97,15 @@ func crouch():
 			animation_player.stop()
 			SPEED = 2.5
 			camera.position.y -= 1
-			collision.shape.height = 1
-			collision.position.y -= 0.5
+			collision.shape.height = 1.3
+			collision.position.y -= 0.3
 			crouched = true
 		else:
 			animation_player.stop()
 			SPEED = 5.0
 			camera.position.y += 1
 			collision.shape.height = 2
-			collision.position.y += 0.5
+			collision.position.y += 0.3
 			crouched = false
 
 func head_bob():
