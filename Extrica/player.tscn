@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c76gw4uaxceip" path="res://player_audio.gd" id="2_onrkg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
 
@@ -136,3 +137,9 @@ offset_right = 2.5
 offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerAudio" type="AudioStreamPlayer3D" parent="." unique_id=1746993839]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7806722, 0)
+volume_db = -5.05
+script = ExtResource("2_onrkg")

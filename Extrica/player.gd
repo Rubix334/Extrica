@@ -2,6 +2,9 @@ extends CharacterBody3D
 class_name Player
 
 @export var SPEED = 5.0
+var speed = SPEED
+var S_SPEED = SPEED * 2
+var C_SPEED = SPEED / 2
 @export var camera_sens = 50
 
 const JUMP_VELOCITY = 4.5
@@ -9,12 +12,16 @@ const JUMP_VELOCITY = 4.5
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var player_audio: AudioStreamPlayer3D = $PlayerAudio
+
 
 
 var look_dir : Vector2 
 var cap_mouse = false
 var crouched = false
 var sprinting = false
+
+var moving = false
 
 signal looking_at_cam
 signal not_looking_at_cam
@@ -30,10 +37,10 @@ func _physics_process(delta: float) -> void:
 	##sprinting
 	if not crouched:
 		if Input.is_action_pressed("sprint"):
-			SPEED = 10
+			SPEED = S_SPEED
 			sprinting = true
 		if Input.is_action_just_released("sprint"):
-			SPEED = 5.0
+			SPEED = speed
 			sprinting = false
 
 	# Add the gravity.
@@ -46,11 +53,12 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		AudioManager.play_sfx("footsteps")
+		player_audio.process_mode = Node.PROCESS_MODE_INHERIT
 		if camera.current:
 			head_bob()
 			
 	else:
+		player_audio.process_mode = Node.PROCESS_MODE_DISABLED
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -95,14 +103,14 @@ func crouch():
 	if Input.is_action_just_pressed("crouch"):
 		if not crouched:
 			animation_player.stop()
-			SPEED = 2.5
+			SPEED = C_SPEED
 			camera.position.y -= 1
 			collision.shape.height = 1.3
 			collision.position.y -= 0.3
 			crouched = true
 		else:
 			animation_player.stop()
-			SPEED = 5.0
+			SPEED = speed
 			camera.position.y += 1
 			collision.shape.height = 2
 			collision.position.y += 0.3

@@ -1,30 +1,7 @@
 extends Node3D
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
-var footsteps : Array = load_audio_files("res://assets/metal_steps_48k24b/")
-
-func load_audio_files(path: String) -> Array[AudioStream]:
-	var streams: Array[AudioStream] = []
-	var dir = DirAccess.open(path)
-	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if not dir.current_is_dir():
-				# Handling exported project remapping (stripping .import/.remap)
-				var clean_path = path + "/" + file_name.replace(".import", "").replace(".remap", "")
-				
-				# Check for audio extensions
-				if clean_path.ends_with(".wav") or clean_path.ends_with(".mp3") or clean_path.ends_with(".ogg"):
-					var stream = load(clean_path)
-					if stream is AudioStream:
-						streams.append(stream)
-			
-			file_name = dir.get_next()
-			
-	return streams
+var footsteps : Array = Global.load_audio_files("res://assets/metal_steps_48k24b/")
 
 func _ready() -> void:
 	change_vol(24,"footstep")
