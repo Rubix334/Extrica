@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Enemy
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_ray: RayCast3D = $RayCast3D
@@ -10,7 +11,7 @@ extends CharacterBody3D
 @export var player:Player
 @export var patrol_points: Array[Node3D] = []
 @export var speed_walk: float = 1.7
-@export var speed_run: float = 3.0
+@export var speed_run: float = 8.5
 @export var attack_range: float = 2.0
 @export var investigate_wait_time: float = 4.0
 @export var patrol_wait_time: float = 3.0
@@ -33,6 +34,8 @@ var return_position: Vector3
 var target: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var update_timer := 0.0
+
+#signal caughtPlayer
 
 # --------------------
 # READY
@@ -120,6 +123,8 @@ func _state_attack() -> void:
 	#anim.play("Attack")
 	#await anim.animation_finished
 	# TODO: handle player capture
+	print("attacking")
+	Global.emit_signal("playerCaught")
 	_enter_state(State.CHASE)
 
 func _state_return(delta: float) -> void:

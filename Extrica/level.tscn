@@ -35,6 +35,8 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=277564241 instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1329927, 0)
+SPEED = 5.0
+camera_sens = 50
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=565244860]
 transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188355, 0.306446, 0.9851621, -0.05529552, 0.16247396, -19.38591, 11.244355, 0)
