@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c76gw4uaxceip" path="res://player_audio.gd" id="2_onrkg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3pqv"]
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+resource_name = "bob"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.6),
+"transitions": PackedFloat32Array(0.50000006, 2.0705318, 0.39229214, 1.7411013),
+"update": 0,
+"values": [Vector3(0, 0.39342272, -0.19228959), Vector3(0, 0.51951396, -0.19228959), Vector3(0, 0.39, -0.192), Vector3(0, 0.39, -0.192)]
+}
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+resource_name = "crouchbob"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 0.28717458, 1.8025018),
+"update": 0,
+"values": [Vector3(0, -0.7, -0.192), Vector3(0, -0.5, -0.192), Vector3(0, -0.7, -0.192)]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "hacking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 50.4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3pqv"]
+_data = {
+&"RESET": SubResource("Animation_4flbx"),
+&"bob": SubResource("Animation_onrkg"),
+&"crouchbob": SubResource("Animation_i3pqv"),
+&"hacking": SubResource("Animation_hqtel")
+}
+
+[node name="Node3D" type="CharacterBody3D" unique_id=277564241]
+collision_mask = 3
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=517186908]
+mesh = SubResource("CapsuleMesh_onrkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1934593349]
+shape = SubResource("CapsuleShape3D_i3pqv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1362064468]
+root_node = NodePath("../Camera3D")
+libraries/ = SubResource("AnimationLibrary_i3pqv")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2043607812]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=759197667]
+transform = Transform3D(3.2485108, 0, 0, 0, -7.060304e-07, -2.9446044, 0, 16.15209, -1.2871274e-07, 0, 0.0019801855, -0.18578112)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Crosshair" type="Control" parent="." unique_id=1696537287]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair" unique_id=1565699068]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerAudio" type="AudioStreamPlayer3D" parent="." unique_id=1746993839]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7806722, 0)
+volume_db = -5.05
+script = ExtResource("2_onrkg")

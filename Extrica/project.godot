@@ -24,6 +24,7 @@ AudioManager="*uid://dm1qwndrlxwt4"
 [global_group]
 
 cams=""
+enemy=""
 
 [input]
 

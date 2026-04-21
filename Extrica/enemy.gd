@@ -124,7 +124,10 @@ func _state_attack() -> void:
 	#await anim.animation_finished
 	# TODO: handle player capture
 	print("attacking")
-	Global.emit_signal("playerCaught")
+	if target is Player:
+		target.caught(self)
+	else:
+		print('Caught ' + target.name)
 	_enter_state(State.CHASE)
 
 func _state_return(delta: float) -> void:

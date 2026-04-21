@@ -25,10 +25,12 @@ var moving = false
 
 signal looking_at_cam
 signal not_looking_at_cam
-#func _ready() -> void:
+func _ready() -> void:
 	#Global.connect("playerCaught",caught)
+	pass
 
 func _physics_process(delta: float) -> void:
+	
 	#cam switch
 	if _check_for_cam():
 		#print("looking at camera")
@@ -129,3 +131,9 @@ func head_bob():
 			animation_player.speed_scale = 1.5
 	else:
 		animation_player.play("crouchbob")
+
+func caught(enemy:Enemy):
+	accepting_input = false
+	var to_enemy = (enemy.global_transform.origin - global_transform.origin).normalized()
+	var new_dir = global_position.slerp(to_enemy, 0.2).normalized()
+	camera.look_at(camera.global_transform.origin + new_dir, Vector3.UP)

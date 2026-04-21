@@ -35,8 +35,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=277564241 instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1329927, 0)
-SPEED = 5.0
-camera_sens = 50
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=565244860]
 transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188355, 0.306446, 0.9851621, -0.05529552, 0.16247396, -19.38591, 11.244355, 0)
@@ -45,11 +43,13 @@ transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188
 transform = Transform3D(1, 0, 0, 0, 0.9772718, -0.21199004, 0, 0.21199004, 0.9772718, -8.540968, 8.12883, -17.526684)
 player = NodePath("../Player")
 
-[node name="Enemy" parent="." unique_id=2036158031 node_paths=PackedStringArray("player", "patrol_points") instance=ExtResource("4_0b4ue")]
+[node name="Enemies" type="Node" parent="." unique_id=1110538845]
+
+[node name="Enemy" parent="Enemies" unique_id=2036158031 node_paths=PackedStringArray("player", "patrol_points") groups=["enemy"] instance=ExtResource("4_0b4ue")]
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
 collision_mask = 3
-player = NodePath("../Player")
-patrol_points = [NodePath("../PatrolPoints/Point1"), NodePath("../PatrolPoints/Point2")]
+player = NodePath("../../Player")
+patrol_points = [NodePath("../../PatrolPoints/Point1"), NodePath("../../PatrolPoints/Point2")]
 
 [node name="PatrolPoints" type="Node3D" parent="." unique_id=1907447706]
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)

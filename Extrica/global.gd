@@ -3,7 +3,7 @@ extends Node
 var spotted := 0
 
 signal playerCaught
-var catcher : Enemy
+var enemy_array : Array = []
 
 func load_file_to_array(path: String) -> Array:
 	var content_array = []
@@ -37,6 +37,3 @@ func load_audio_files(path: String) -> Array[AudioStream]:
 			file_name = dir.get_next()
 			
 	return streams
-
-func get_catcher():
-	return catcher
