@@ -1,6 +1,7 @@
 extends Node
 
 var spotted := 0
+@onready var game_over_hud: Control = $GameOverHUD
 
 signal playerCaught
 var enemy_array : Array = []

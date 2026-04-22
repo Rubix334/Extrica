@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c76gw4uaxceip" path="res://player_audio.gd" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://3nhvy0ivvdef" path="res://GameOverHUD.tscn" id="3_i3pqv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
 
@@ -103,6 +104,7 @@ root_node = NodePath("../Camera3D")
 libraries/ = SubResource("AnimationLibrary_i3pqv")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2043607812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -0.192)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=759197667]
 transform = Transform3D(3.2485108, 0, 0, 0, -7.060304e-07, -2.9446044, 0, 16.15209, -1.2871274e-07, 0, 0.0019801855, -0.18578112)
@@ -143,3 +145,6 @@ process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7806722, 0)
 volume_db = -5.05
 script = ExtResource("2_onrkg")
+
+[node name="GameOverHud" parent="." unique_id=726392875 instance=ExtResource("3_i3pqv")]
+visible = false

@@ -1,5 +1,6 @@
 extends CharacterBody3D
 class_name Player
+@onready var game_over_hud: Control = $GameOverHud
 
 @export var SPEED := 5.0
 var speed = SPEED
@@ -134,6 +135,11 @@ func head_bob():
 
 func caught(enemy:Enemy):
 	accepting_input = false
-	var to_enemy = (enemy.global_transform.origin - global_transform.origin).normalized()
-	var new_dir = global_position.slerp(to_enemy, 0.2).normalized()
-	camera.look_at(camera.global_transform.origin + new_dir, Vector3.UP)
+	var angle = atan2(global_position.x - enemy.global_position.x,global_position.y - enemy.global_position.y)
+	rotate_camera_to(angle)
+	game_over_hud.visible = true
+
+func rotate_camera_to(new_angle: float):
+	var tween = create_tween()
+	# "rotation:y" targets the specific property
+	tween.tween_property(self, "rotation:y", new_angle, 0.5).set_trans(Tween.TRANS_SINE)

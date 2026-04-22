@@ -35,6 +35,8 @@ var target: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var update_timer := 0.0
 
+var attacked = false
+
 #signal caughtPlayer
 
 # --------------------
@@ -42,6 +44,7 @@ var update_timer := 0.0
 # --------------------
 func _ready() -> void:
 	target = player
+	attacked = false
 	_enter_state( State.IDLE if patrol_points.is_empty() else State.PATROL)
 
 # --------------------
@@ -114,6 +117,7 @@ func _state_chase(delta: float) -> void:
 
 	if global_transform.origin.distance_to(target.global_transform.origin) < attack_range:
 		_enter_state(State.ATTACK)
+		
 	elif not _can_see_player():
 		investigate_position = target.global_transform.origin
 		_enter_state(State.INVESTIGATE)
@@ -125,10 +129,12 @@ func _state_attack() -> void:
 	# TODO: handle player capture
 	print("attacking")
 	if target is Player:
-		target.caught(self)
+		if not attacked:
+			target.caught(self)
+			attacked = true
 	else:
 		print('Caught ' + target.name)
-	_enter_state(State.CHASE)
+
 
 func _state_return(delta: float) -> void:
 	if agent.is_navigation_finished():
