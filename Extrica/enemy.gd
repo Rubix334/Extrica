@@ -246,7 +246,7 @@ func noticed() -> void:
 # --------------------
 # SOUND
 # --------------------
-#func hear_noise(pos: Vector3) -> void:
-	#if state not in [State.CHASE, State.ATTACK]:
-		#investigate_position = pos
-		#_enter_state(State.INVESTIGATE)
+func hear_noise(pos: Vector3) -> void:
+	if state not in [State.CHASE, State.ATTACK]:
+		investigate_position = pos
+		_enter_state(State.INVESTIGATE)

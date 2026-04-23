@@ -1,9 +1,8 @@
 extends Node
 
 var spotted := 0
-@onready var game_over_hud: Control = $GameOverHUD
 
-signal playerCaught
+#signal playerCaught
 var enemy_array : Array = []
 
 func load_file_to_array(path: String) -> Array:

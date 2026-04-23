@@ -15,7 +15,7 @@ var switchable:bool
 var controlled:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.connect("looking_at_cam", _looked_at)
+	#player.connect("looking_at_cam", _looked_at)
 	player.connect("not_looking_at_cam",_not_looked_at)
 	switchable = false
 	controlled = false
@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("hack") and not controlled: #hack = Q
 			progress_bar.visible = true
 			progress_bar.value += 1
+			player.play_animation("hacking")
 			if progress_bar.value >= 100:
 				camera.make_current()
 				controlled = true

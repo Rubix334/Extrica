@@ -25,6 +25,7 @@ AudioManager="*uid://dm1qwndrlxwt4"
 
 cams=""
 enemy=""
+hackable=""
 
 [input]
 

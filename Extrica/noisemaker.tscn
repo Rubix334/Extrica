@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8bca7snl575o"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7djtnt3165mf" path="res://assets/Speaker/model.obj" id="1_kexua"]
+
+[node name="Node3D" type="Node3D" unique_id=1574848637]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1690072939]
+transform = Transform3D(0.27818653, 0, 0.96052706, 0, 1, 0, -0.96052706, 0, 0.27818653, 0.011303127, 0.1252895, 0.06882924)
+mesh = ExtResource("1_kexua")

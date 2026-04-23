@@ -24,7 +24,7 @@ var sprinting = false
 
 var moving = false
 
-signal looking_at_cam
+#signal looking_at_cam
 signal not_looking_at_cam
 func _ready() -> void:
 	#Global.connect("playerCaught",caught)
@@ -35,7 +35,9 @@ func _physics_process(delta: float) -> void:
 	#cam switch
 	if _check_for_cam():
 		#print("looking at camera")
-		emit_signal("looking_at_cam")
+		#emit_signal("looking_at_cam")
+		var cam = _get_object_in_view()
+		cam._looked_at()
 	else:
 		emit_signal("not_looking_at_cam")
 	
@@ -106,6 +108,9 @@ func _check_for_cam() -> float:
 			return false
 	return false
 
+func _get_object_in_view() -> Object:
+	return ray.get_collider()
+
 func crouch():
 	if Input.is_action_just_pressed("crouch"):
 		if not crouched:
@@ -140,6 +145,10 @@ func caught(enemy:Enemy):
 	game_over_hud.visible = true
 
 func rotate_camera_to(new_angle: float):
+
 	var tween = create_tween()
 	# "rotation:y" targets the specific property
 	tween.tween_property(self, "rotation:y", new_angle, 0.5).set_trans(Tween.TRANS_SINE)
+
+func play_animation(animation:String):
+	animation_player.play(animation)
