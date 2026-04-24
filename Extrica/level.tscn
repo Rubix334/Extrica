@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://iee2u0lw37i4" path="res://level.gd" id="1_vonw3"]
 [ext_resource type="PackedScene" uid="uid://bop3dp2337m7x" path="res://sec_cam.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://b8bca7snl575o" path="res://noisemaker.tscn" id="5_f2txt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u52ul"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,8 +36,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=277564241 instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1329927, 0)
-SPEED = null
-camera_sens = null
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=565244860]
 transform = Transform3D(0.1716014, 0.30142975, -0.9379195, 0.0028882562, 0.95188355, 0.306446, 0.9851621, -0.05529552, 0.16247396, -19.38591, 11.244355, 0)
@@ -49,7 +48,6 @@ player = NodePath("../Player")
 
 [node name="Enemy" parent="Enemies" unique_id=2036158031 node_paths=PackedStringArray("player", "patrol_points") groups=["enemy"] instance=ExtResource("4_0b4ue")]
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
-collision_mask = 3
 player = NodePath("../../Player")
 patrol_points = [NodePath("../../PatrolPoints/Point1"), NodePath("../../PatrolPoints/Point2")]
 
@@ -61,6 +59,8 @@ transform = Transform3D(1, -1.364242e-12, 0, -4.5474735e-13, 1, -2.3653968e-10, 
 
 [node name="Point2" type="Marker3D" parent="PatrolPoints" unique_id=983714950]
 transform = Transform3D(1, -1.364242e-12, 0, -9.094947e-13, 1, -2.9474734e-10, 4.656613e-09, 2.873577e-10, 1, 9.533475, -0.011855125, -14.830048)
+
+[node name="enemy2Points" type="Node3D" parent="PatrolPoints" unique_id=184336284]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=979623761]
 navigation_mesh = SubResource("NavigationMesh_0b4ue")
@@ -86,13 +86,18 @@ size = Vector3(1, 9.261658, 1)
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1755402824]
 transform = Transform3D(0.748273, 0, 0.66339093, 0, 1, 0, -0.66339093, 0, 0.748273, 9.004307, 2.874632, -0.2081604)
 use_collision = true
+collision_layer = 3
 size = Vector3(1, 8.01416, 13.713867)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=175322676]
 transform = Transform3D(0.9497046, 0, -0.31314725, 0, 1, 0, 0.31314725, 0, 0.9497046, -5.969075, 1.2819576, -8.7479725)
 use_collision = true
+collision_layer = 3
 size = Vector3(3.0968018, 1.9492188, 1)
 
 [node name="Node3D" parent="." unique_id=670971705 node_paths=PackedStringArray("player") instance=ExtResource("3_oi3di")]
 transform = Transform3D(0.5353551, 0, -0.8446271, 0, 1, 0, 0.8446271, 0, 0.5353551, 8.186338, 5.9433193, 0.722116)
 player = NodePath("../Player")
+
+[node name="Node3D2" parent="." unique_id=1574848637 instance=ExtResource("5_f2txt")]
+transform = Transform3D(0.68677044, 0, -0.7268744, 0, 1, 0, 0.7268744, 0, 0.68677044, -3.9511423, 5.356098, -15.729596)

@@ -6,7 +6,7 @@ class_name Player
 var speed = SPEED
 var S_SPEED = (SPEED * 2)-2
 var C_SPEED = SPEED / 2
-@export var camera_sens = 50
+@export var camera_sens : float = 50.0
 
 const JUMP_VELOCITY = 4.5
 @onready var camera: Camera3D = $Camera3D

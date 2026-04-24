@@ -13,7 +13,7 @@ class_name Enemy
 @export var speed_walk: float = 1.7
 @export var speed_run: float = 8.5
 @export var attack_range: float = 2.0
-@export var investigate_wait_time: float = 4.0
+@export var investigate_wait_time: float = 7
 @export var patrol_wait_time: float = 3.0
 @export var update_interval: float = 0.2
 

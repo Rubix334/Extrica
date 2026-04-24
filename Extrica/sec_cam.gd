@@ -13,6 +13,7 @@ var camera_sens = 50
 
 var switchable:bool
 var controlled:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#player.connect("looking_at_cam", _looked_at)
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("hack") and not controlled: #hack = Q
 			progress_bar.visible = true
 			progress_bar.value += 1
-			player.play_animation("hacking")
+			#player.play_animation("hacking")
 			if progress_bar.value >= 100:
 				camera.make_current()
 				controlled = true
@@ -37,6 +38,13 @@ func _process(delta: float) -> void:
 	if controlled:
 		_rotate_camera(delta)
 		hud.visible = true
+		var obj = ray.get_collider()
+		print(obj)
+		if Input.is_action_just_pressed("mouse2"):
+			player.camera.make_current()
+		#if obj.is_in_group("hackable"):
+			#if Input.is_action_just_pressed("mouse1"):
+				#obj.play_audio()
 	else:
 		hud.visible = false
 	
