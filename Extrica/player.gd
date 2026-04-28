@@ -141,8 +141,10 @@ func head_bob():
 func caught(enemy:Enemy):
 	accepting_input = false
 	var angle = atan2(global_position.x - enemy.global_position.x,global_position.y - enemy.global_position.y)
+	camera.make_current()
 	rotate_camera_to(angle)
 	game_over_hud.visible = true
+	Global.death = true
 
 func rotate_camera_to(new_angle: float):
 

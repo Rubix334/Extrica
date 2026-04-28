@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://v81rh3tcdtlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hrws"]
+font_size = 100
+
+[node name="Control" type="Control" unique_id=778548016]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=560302920]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -138.5
+offset_right = 460.0
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Test Complete
+"
+label_settings = SubResource("LabelSettings_7hrws")

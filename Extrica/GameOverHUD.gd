@@ -1,7 +1,9 @@
 extends Control
 
 
-
+func _process(delta: float) -> void:
+	if visible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()

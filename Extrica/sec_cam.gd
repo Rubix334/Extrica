@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		var obj = ray.get_collider()
 		print(obj)
 		if Input.is_action_just_pressed("mouse2"):
+			controlled = false
 			player.camera.make_current()
 		#if obj.is_in_group("hackable"):
 			#if Input.is_action_just_pressed("mouse1"):
