@@ -39,4 +39,3 @@ transform = Transform3D(1, 0, 0, 0, 2.3140216, 0, 0, 0, 1, 0, 0.032939672, 0)
 target_position = Vector3(0, 0, -15)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=885817445]
-debug_enabled = true

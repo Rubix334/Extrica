@@ -50,12 +50,14 @@ player = NodePath("../Player")
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
 player = NodePath("../../Player")
 patrol_points = [NodePath("../../PatrolPoints/Point1"), NodePath("../../PatrolPoints/Point2")]
+speed_walk = 5.0
+speed_run = 5.0
 
 [node name="PatrolPoints" type="Node3D" parent="." unique_id=1907447706]
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
 
 [node name="Point1" type="Marker3D" parent="PatrolPoints" unique_id=1660342290]
-transform = Transform3D(1, -1.364242e-12, 0, -4.5474735e-13, 1, -2.3653968e-10, 3.7252903e-09, 2.2915003e-10, 1, 23.243876, -0.010426998, -13.043796)
+transform = Transform3D(1, -1.8189894e-12, 0, -1.364242e-12, 1, -4.1116266e-10, 6.519258e-09, 4.0378723e-10, 1, 1.8438516, -0.011311531, -14.150403)
 
 [node name="Point2" type="Marker3D" parent="PatrolPoints" unique_id=983714950]
 transform = Transform3D(1, -1.364242e-12, 0, -9.094947e-13, 1, -2.9474734e-10, 4.656613e-09, 2.873577e-10, 1, 9.533475, -0.011855125, -14.830048)
@@ -100,4 +102,4 @@ transform = Transform3D(0.5353551, 0, -0.8446271, 0, 1, 0, 0.8446271, 0, 0.53535
 player = NodePath("../Player")
 
 [node name="Node3D2" parent="." unique_id=1574848637 instance=ExtResource("5_f2txt")]
-transform = Transform3D(0.68677044, 0, -0.7268744, 0, 1, 0, 0.7268744, 0, 0.68677044, -3.9511423, 5.356098, -15.729596)
+transform = Transform3D(0.68677044, 0, -0.7268744, 0, 1, 0, 0.7268744, 0, 0.68677044, 6.0894957, 2.913015, -2.3033366)

@@ -43,9 +43,11 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("mouse2"):
 			controlled = false
 			player.camera.make_current()
-		#if obj.is_in_group("hackable"):
-			#if Input.is_action_just_pressed("mouse1"):
-				#obj.play_audio()
+		if obj != null:
+			if obj.is_in_group("hackable"):
+				
+				if Input.is_action_just_pressed("mouse1"):
+					obj.play_audio()
 	else:
 		hud.visible = false
 	

@@ -14,7 +14,7 @@ class_name Enemy
 @export var speed_run: float = 8.5
 @export var attack_range: float = 2.0
 @export var investigate_wait_time: float = 7
-@export var patrol_wait_time: float = 3.0
+@export var patrol_wait_time: float = 2
 @export var update_interval: float = 0.2
 
 const VIEW_ANGLE: float = 190.0
@@ -238,7 +238,7 @@ func _looking() -> void:
 
 func noticed() -> void:
 	attention_marker.visible = true
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.2).timeout
 	if _can_see_player():
 		_enter_state(State.CHASE)
 	else:
