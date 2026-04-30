@@ -119,6 +119,7 @@ func _state_chase(delta: float) -> void:
 		_enter_state(State.ATTACK)
 		
 	elif not _can_see_player():
+		await get_tree().create_timer(1.5).timeout
 		investigate_position = target.global_transform.origin
 		_enter_state(State.INVESTIGATE)
 

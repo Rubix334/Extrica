@@ -1,4 +1,5 @@
 extends Node3D
+class_name NoiseMaker
 
 @export var sound_range: float = 8
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D

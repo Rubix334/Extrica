@@ -45,12 +45,14 @@ func _process(delta: float) -> void:
 			player.camera.make_current()
 		if obj != null:
 			if obj.is_in_group("hackable"):
-				
-				if Input.is_action_just_pressed("mouse1"):
-					obj.play_audio()
+				if obj is NoiseMaker:
+					obj.glow_mesh.visible = true
+					if Input.is_action_just_pressed("mouse1"):
+						obj.play_audio()
+				else:
+					obj.glow_mesh.visible = false
 	else:
 		hud.visible = false
-	
 	pass
 
 func _looked_at():
