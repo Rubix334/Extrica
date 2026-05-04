@@ -1,5 +1,6 @@
 extends StaticBody3D
-
+class_name door
+@export var locked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,10 +9,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	print(locked)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
-		var tween = create_tween()
-		tween.tween_property(self, "global_position.y", 10,1)
+		if not locked:
+			var tween = get_tree().create_tween()
+			tween.tween_property($MeshInstance3D,"position",Vector3(2,-0.08,0.3),1)
+			var tween2 = get_tree().create_tween()
+			tween2.tween_property($CollisionShape3D,"position",Vector3(2,1.287,-0.098),1)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property($MeshInstance3D,"position",Vector3(0,0,0),1)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property($CollisionShape3D,"position",Vector3(0,0,0),1)

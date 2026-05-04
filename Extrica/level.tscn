@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bop3dp2337m7x" path="res://sec_cam.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://b8bca7snl575o" path="res://noisemaker.tscn" id="5_f2txt"]
+[ext_resource type="PackedScene" uid="uid://cxfoo8tpd4duq" path="res://door.tscn" id="6_1ainy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u52ul"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,8 +51,8 @@ player = NodePath("../Player")
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
 player = NodePath("../../Player")
 patrol_points = [NodePath("../../PatrolPoints/Point1"), NodePath("../../PatrolPoints/Point2")]
-speed_walk = 5.0
-speed_run = 5.0
+speed_walk = 1.0
+speed_run = 1.0
 
 [node name="PatrolPoints" type="Node3D" parent="." unique_id=1907447706]
 transform = Transform3D(-0.008668271, -0.0007993776, -0.99996215, 0, 0.9999997, -0.00079940766, 0.99996245, -6.929482e-06, -0.008668268, -13.456046, 1.8417788, 0.044928312)
@@ -103,3 +104,6 @@ player = NodePath("../Player")
 
 [node name="Node3D2" parent="." unique_id=1574848637 instance=ExtResource("5_f2txt")]
 transform = Transform3D(0.68677044, 0, -0.7268744, 0, 1, 0, 0.7268744, 0, 0.68677044, 6.0894957, 2.913015, -2.3033366)
+
+[node name="Node3D3" parent="." unique_id=1436807629 instance=ExtResource("6_1ainy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35894322, -7.4103575)

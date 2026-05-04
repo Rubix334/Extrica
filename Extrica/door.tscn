@@ -3,21 +3,31 @@
 [ext_resource type="ArrayMesh" uid="uid://0cfmkpwvp8hw" path="res://assets/environment assets/door.tres" id="1_ba8gm"]
 [ext_resource type="Script" uid="uid://cjyui4c0gsscb" path="res://door.gd" id="1_v6xrn"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6xrn"]
+emission_enabled = true
+emission = Color(0.3475019, 0.5487164, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ba8gm"]
 size = Vector3(1.5214844, 2.6782532, 0.5070801)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6xrn"]
 size = Vector3(2.7922363, 2.743164, 2.0406647)
 
-[node name="Node3D" type="StaticBody3D" unique_id=1436807629]
+[node name="Node3D" type="StaticBody3D" unique_id=1667466687 groups=["hackable"]]
 script = ExtResource("1_v6xrn")
+
+[node name="glow_mesh" type="MeshInstance3D" parent="." unique_id=293799482]
+transform = Transform3D(110.62, 0, 0, 0, -5.166905e-06, 97.11, 0, -118.205, -4.2448128e-06, 0, -0.046604574, 0.40184772)
+visible = false
+material_override = SubResource("StandardMaterial3D_v6xrn")
+mesh = ExtResource("1_ba8gm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=348449712]
 transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, -0.07980263, 0.32903218)
 mesh = ExtResource("1_ba8gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=431161216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.286972, -0.09777832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.286972, -0.09777829)
 shape = SubResource("BoxShape3D_ba8gm")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1954010841]
@@ -27,3 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024536133, 1.4194336, -0.09
 shape = SubResource("BoxShape3D_v6xrn")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

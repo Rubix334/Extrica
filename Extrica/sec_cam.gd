@@ -23,6 +23,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if camera.current:
+		controlled = true
+	else:
+		controlled = false
+	
 	if switchable:
 		if Input.is_action_pressed("hack") and not controlled: #hack = Q
 			progress_bar.visible = true
@@ -30,7 +35,7 @@ func _process(delta: float) -> void:
 			#player.play_animation("hacking")
 			if progress_bar.value >= 100:
 				camera.make_current()
-				controlled = true
+				
 		if Input.is_action_just_released("hack"):
 			progress_bar.visible = false
 			progress_bar.value = 0
@@ -51,6 +56,10 @@ func _process(delta: float) -> void:
 						obj.play_audio()
 				else:
 					obj.glow_mesh.visible = false
+				if obj is door:
+					obj.glow_mesh.visible = true
+					if Input.is_action_just_pressed("mouse1"):
+						obj.locked = false
 	else:
 		hud.visible = false
 	pass
