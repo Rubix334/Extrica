@@ -14,6 +14,7 @@ size = Vector3(1.5214844, 2.6782532, 0.5070801)
 size = Vector3(2.7922363, 2.743164, 2.0406647)
 
 [node name="Node3D" type="StaticBody3D" unique_id=1667466687 groups=["hackable"]]
+collision_layer = 9
 script = ExtResource("1_v6xrn")
 
 [node name="glow_mesh" type="MeshInstance3D" parent="." unique_id=293799482]
@@ -31,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.286972, -0.09777829)
 shape = SubResource("BoxShape3D_ba8gm")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1954010841]
+collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=56204165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024536133, 1.4194336, -0.09372711)

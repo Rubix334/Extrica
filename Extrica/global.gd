@@ -2,6 +2,8 @@ extends Node
 
 var spotted := 0
 
+#add enemy alert level
+
 var death = false
 #signal playerCaught
 var enemy_array : Array = []

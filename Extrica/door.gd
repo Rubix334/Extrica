@@ -1,6 +1,7 @@
 extends StaticBody3D
 class_name door
 @export var locked = false
+@onready var glow_mesh: MeshInstance3D = $glow_mesh
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +11,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	print(locked)
+
+func change_lock_status():
+	locked = !locked
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

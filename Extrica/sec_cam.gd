@@ -54,12 +54,11 @@ func _process(delta: float) -> void:
 					obj.glow_mesh.visible = true
 					if Input.is_action_just_pressed("mouse1"):
 						obj.play_audio()
-				else:
-					obj.glow_mesh.visible = false
 				if obj is door:
 					obj.glow_mesh.visible = true
 					if Input.is_action_just_pressed("mouse1"):
-						obj.locked = false
+						obj.change_lock_status()
+				
 	else:
 		hud.visible = false
 	pass
