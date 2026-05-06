@@ -14,6 +14,8 @@ const JUMP_VELOCITY = 4.5
 @onready var collision: CollisionShape3D = $CollisionShape3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_audio: AudioStreamPlayer3D = $PlayerAudio
+@onready var audio_emission_area: Area3D = $AudioEmissionArea
+@onready var audio_emission_shape: CollisionShape3D = $AudioEmissionArea/CollisionShape3D
 
 var accepting_input = true
 
@@ -57,9 +59,11 @@ func _physics_process(delta: float) -> void:
 		##sprinting
 		if not crouched:
 			if Input.is_action_pressed("sprint"):
+				audio_emission_shape.shape.radius = 5
 				SPEED = S_SPEED
 				sprinting = true
 			if Input.is_action_just_released("sprint"):
+				audio_emission_shape.shape.radius = 2.5
 				SPEED = speed
 				sprinting = false
 
@@ -122,6 +126,7 @@ func crouch():
 			crouched = true
 		else:
 			animation_player.stop()
+			audio_emission_shape.shape.radius = 0.01
 			SPEED = speed
 			camera.position.y += 1
 			collision.shape.height = 2
@@ -154,3 +159,8 @@ func rotate_camera_to(new_angle: float):
 
 func play_animation(animation:String):
 	animation_player.play(animation)
+
+
+func _on_audio_emission_area_body_entered(body: Node3D) -> void:
+	if body is Enemy:
+		body.hear_noise(global_position)

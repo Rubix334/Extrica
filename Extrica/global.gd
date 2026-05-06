@@ -3,6 +3,8 @@ extends Node
 var spotted := 0
 
 #add enemy alert level
+var enemy_alert = 1
+var chase_counter = 0
 
 var death = false
 #signal playerCaught
@@ -40,3 +42,15 @@ func load_audio_files(path: String) -> Array[AudioStream]:
 			file_name = dir.get_next()
 			
 	return streams
+
+func _ready() -> void:
+	enemy_alert = 1
+	chase_counter = 0
+
+func _process(delta: float) -> void:
+	if chase_counter > 2:
+		print("chase_counter: "+str(chase_counter))
+		enemy_alert = 2
+	elif chase_counter > 4:
+		enemy_alert = 3 
+		print("chase_counter: "+str(chase_counter))

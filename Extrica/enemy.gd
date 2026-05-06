@@ -16,6 +16,7 @@ class_name Enemy
 @export var investigate_wait_time: float = 7
 @export var patrol_wait_time: float = 2
 @export var update_interval: float = 0.2
+@export var notice_timer:float = 1.2
 
 const VIEW_ANGLE: float = 190.0
 const SMOOTHING_FACTOR = 0.2
@@ -37,6 +38,8 @@ var update_timer := 0.0
 
 var attacked = false
 
+#in chase function
+var chase_counted: bool = false
 #signal caughtPlayer
 
 # --------------------
@@ -52,7 +55,6 @@ func _ready() -> void:
 # --------------------
 func _physics_process(delta: float) -> void:
 	_update_path(delta)
-
 	match state:
 		State.IDLE:        _state_idle()
 		State.PATROL:      _state_patrol(delta)
@@ -60,6 +62,19 @@ func _physics_process(delta: float) -> void:
 		State.CHASE:       _state_chase(delta)
 		State.ATTACK:      _state_attack()
 		State.RETURN:      _state_return(delta)
+	
+	#alert level
+	if Global.enemy_alert == 2:
+		speed_walk = 2
+		investigate_timer = 5
+		patrol_wait_time = 1.5
+		notice_timer = 1
+	elif Global.enemy_alert == 3:
+		speed_walk = 3
+		investigate_timer = 4
+		patrol_wait_time = 1.2
+		notice_timer =0.8
+	
 	
 	
 	_looking()
@@ -109,6 +124,12 @@ func _state_investigate(delta: float) -> void:
 
 func _state_chase(delta: float) -> void:
 	attention_marker.visible = false
+	
+	#KNOWN BUG: sometimes adds multiple times in bursts when in chase 
+	if chase_counted == false:
+		Global.chase_counter += 1
+		chase_counted = true
+	
 	if not target:
 		_enter_state(State.RETURN)
 		return
@@ -162,6 +183,8 @@ func _enter_state(new_state: State) -> void:
 			agent.set_target_position(investigate_position)
 		State.CHASE, State.INVESTIGATE:
 			return_position = global_transform.origin
+			
+
 
 func _update_agent_target() -> void:
 	match state:
@@ -239,7 +262,7 @@ func _looking() -> void:
 
 func noticed() -> void:
 	attention_marker.visible = true
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(notice_timer).timeout
 	if _can_see_player():
 		_enter_state(State.CHASE)
 	else:

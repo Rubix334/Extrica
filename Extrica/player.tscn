@@ -91,6 +91,9 @@ _data = {
 &"hacking": SubResource("Animation_hqtel")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i3pqv"]
+radius = 5.0
+
 [node name="Node3D" type="CharacterBody3D" unique_id=277564241]
 collision_mask = 3
 input_capture_on_drag = true
@@ -150,3 +153,10 @@ script = ExtResource("2_onrkg")
 
 [node name="GameOverHud" parent="." unique_id=726392875 instance=ExtResource("3_i3pqv")]
 visible = false
+
+[node name="AudioEmissionArea" type="Area3D" parent="." unique_id=1652812030]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioEmissionArea" unique_id=274004716]
+shape = SubResource("CylinderShape3D_i3pqv")
+
+[connection signal="body_entered" from="AudioEmissionArea" to="." method="_on_audio_emission_area_body_entered"]
