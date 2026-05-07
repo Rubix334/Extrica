@@ -37,6 +37,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var update_timer := 0.0
 
 var attacked = false
+var moving = false
 
 #in chase function
 var chase_counted: bool = false
@@ -201,9 +202,11 @@ func _update_agent_target() -> void:
 
 func _walk_to(next_pos: Vector3, speed: float) -> void:
 	#anim.play("Walk")
+	moving = true
 	_move_towards(next_pos, speed)
 
 func _stop_and_idle() -> void:
+	moving = false
 	velocity = Vector3.ZERO
 	#anim.play("Idle")
 
