@@ -120,17 +120,17 @@ func crouch():
 		if not crouched:
 			animation_player.stop()
 			SPEED = C_SPEED
-			camera.position.y -= 1
+			camera.position.y = -0.7 #-= 1
 			collision.shape.height = 1.3
-			collision.position.y -= 0.3
+			collision.position.y = -0.3
 			crouched = true
 		else:
 			animation_player.stop()
 			audio_emission_shape.shape.radius = 0.01
 			SPEED = speed
-			camera.position.y += 1
+			camera.position.y = 0.3 #+= 1
 			collision.shape.height = 2
-			collision.position.y += 0.3
+			collision.position.y = 0 #+= 0.3
 			crouched = false
 
 func head_bob():

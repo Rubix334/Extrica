@@ -101,9 +101,21 @@ region = Rect2(448, 192, 64, 64)
 atlas = ExtResource("2_qi2p4")
 region = Rect2(512, 192, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_difxq"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5wqg"]
 atlas = ExtResource("2_qi2p4")
 region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tv8x"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnl6c"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgro5"]
 atlas = ExtResource("2_qi2p4")
@@ -228,10 +240,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_difxq")
+}],
+"loop": true,
+"name": &"back_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b5wqg")
 }],
 "loop": true,
-"name": &"default",
+"name": &"forward_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tv8x")
+}],
+"loop": true,
+"name": &"left_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnl6c")
+}],
+"loop": true,
+"name": &"right_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -289,10 +325,11 @@ text = "?
 font_size = 100
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1746115186]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_difxq")
-frame_progress = 0.91830343
+animation = &"forward_idle"
+frame_progress = 0.97282016
 script = ExtResource("3_iifgy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2019432292]

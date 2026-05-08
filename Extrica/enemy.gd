@@ -41,7 +41,6 @@ var moving = false
 
 #in chase function
 var chase_counted: bool = false
-#signal caughtPlayer
 
 # --------------------
 # READY
@@ -76,6 +75,10 @@ func _physics_process(delta: float) -> void:
 		patrol_wait_time = 1.2
 		notice_timer =0.8
 	
+	if _can_see_player():
+		Global.player_in_view = true
+	else:
+		Global.player_in_view = false
 	
 	
 	_looking()
@@ -265,6 +268,7 @@ func _looking() -> void:
 
 func noticed() -> void:
 	attention_marker.visible = true
+	
 	await get_tree().create_timer(notice_timer).timeout
 	if _can_see_player():
 		_enter_state(State.CHASE)

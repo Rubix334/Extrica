@@ -2,6 +2,7 @@ extends Node
 
 var spotted := 0
 
+var player_in_view: bool = false
 #add enemy alert level
 var enemy_alert = 1
 var chase_counter = 0
