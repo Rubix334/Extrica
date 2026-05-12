@@ -3,6 +3,8 @@ extends Control
 @onready var cam_name: Label = $name
 @onready var time_label: Label = $time_label
 @onready var timer: Timer = $Timer
+@onready var noisemaker: Label = $noisemaker
+@onready var ani: AnimationPlayer = $AnimationTree
 
 var sec = 0
 var min = 0
@@ -21,7 +23,11 @@ func _process(delta: float) -> void:
 		if min > 9:
 			time_label.text = "00:"+str(min)+":0"+str(sec)
 		time_label.text = "00:0"+str(min)+":0"+str(sec)
-
+	if noisemaker.visible==true:
+		ani.play("fade out")
+		await get_tree().create_timer(2.5).timeout
+		noisemaker.visible=false
+		ani.play("RESET")
 
 func _on_timer_timeout() -> void:
 	sec += 1

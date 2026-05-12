@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://br8biyf5s7mvh"]
 
+[ext_resource type="Script" uid="uid://cap7jhbdbqn1l" path="res://player_hud.gd" id="1_tvw2b"]
+[ext_resource type="FontFile" uid="uid://2se2tpsyvngl" path="res://assets/Futuralistic-PVavP.ttf" id="2_cs3pk"]
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5sskr"]
 load_path = "res://.godot/imported/NotSeen_icon.png-320feebc5482b928ce53c8e4bbd90543.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5sskr"]
+font = ExtResource("2_cs3pk")
+font_size = 32
 
 [node name="Control" type="Control" unique_id=1077296290]
 layout_mode = 3
@@ -10,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tvw2b")
 
 [node name="Eye_icon" type="TextureRect" parent="." unique_id=291985374]
 layout_mode = 1
@@ -26,3 +34,13 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CompressedTexture2D_5sskr")
 expand_mode = 1
+
+[node name="cam" type="Label" parent="." unique_id=763411903]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 609.0
+offset_right = 739.0
+offset_bottom = 646.0
+text = "hold Q to hack the camera"
+label_settings = SubResource("LabelSettings_5sskr")
+horizontal_alignment = 1

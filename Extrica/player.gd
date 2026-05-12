@@ -16,6 +16,7 @@ const JUMP_VELOCITY = 4.5
 @onready var player_audio: AudioStreamPlayer3D = $PlayerAudio
 @onready var audio_emission_area: Area3D = $AudioEmissionArea
 @onready var audio_emission_shape: CollisionShape3D = $AudioEmissionArea/CollisionShape3D
+@onready var player_hud: Control = $player_hud
 
 var accepting_input = true
 
@@ -40,9 +41,10 @@ func _physics_process(delta: float) -> void:
 		#emit_signal("looking_at_cam")
 		var cam = _get_object_in_view()
 		cam._looked_at()
+		player_hud.cam.visible=true
 	else:
 		emit_signal("not_looking_at_cam")
-	
+		player_hud.cam.visible=false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
