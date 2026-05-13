@@ -41,10 +41,10 @@ func _physics_process(delta: float) -> void:
 		#emit_signal("looking_at_cam")
 		var cam = _get_object_in_view()
 		cam._looked_at()
-		player_hud.cam.visible=true
+		player_hud.label.visible=true
 	else:
 		emit_signal("not_looking_at_cam")
-		player_hud.cam.visible=false
+		player_hud.label.visible=false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

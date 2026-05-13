@@ -3,7 +3,7 @@ extends Control
 @onready var eye_icon: TextureRect = $Eye_icon
 const NOT_SEEN_ICON = preload("uid://bwyotkd81qy7j")
 const SEEN_ICON = preload("uid://cywpg7wj1pe7k")
-@onready var cam: Label = $cam
+@onready var label: Label = $label
 
 
 # Called when the node enters the scene tree for the first time.

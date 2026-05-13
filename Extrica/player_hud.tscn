@@ -35,7 +35,7 @@ grow_vertical = 0
 texture = SubResource("CompressedTexture2D_5sskr")
 expand_mode = 1
 
-[node name="cam" type="Label" parent="." unique_id=763411903]
+[node name="label" type="Label" parent="." unique_id=763411903]
 layout_mode = 0
 offset_left = 408.0
 offset_top = 609.0
