@@ -5,19 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="2_covbg"]
 [ext_resource type="PackedScene" uid="uid://bop3dp2337m7x" path="res://sec_cam.tscn" id="2_mirvv"]
 [ext_resource type="PackedScene" uid="uid://b8bca7snl575o" path="res://noisemaker.tscn" id="5_0e6ky"]
+[ext_resource type="PackedScene" uid="uid://2oygy8c5q5ns" path="res://dust_particles.tscn" id="6_qu08u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gpogn"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_covbg"]
+[sub_resource type="Sky" id="Sky_qu08u"]
 sky_material = SubResource("ProceduralSkyMaterial_gpogn")
 
 [sub_resource type="Environment" id="Environment_3qcqn"]
 background_mode = 1
 background_color = Color(0.07450981, 0.039215688, 0.23137255, 1)
 background_energy_multiplier = 0.52
-sky = SubResource("Sky_covbg")
+sky = SubResource("Sky_qu08u")
 ambient_light_source = 2
 ambient_light_color = Color(0.31142926, 0.19813204, 0.093257956, 1)
 ambient_light_energy = 0.13
@@ -274,6 +275,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2394838, 1.1829424)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="lights" unique_id=1669648360]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.47302, 7.9452715)
+light_volumetric_fog_energy = 5.0
 shadow_enabled = true
 spot_range = 24.489
 spot_attenuation = 0.6
@@ -281,6 +283,7 @@ spot_angle = 33.18
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="lights" unique_id=413766014]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2301712, 8.47302, 23.118713)
+light_volumetric_fog_energy = 5.0
 shadow_enabled = true
 spot_range = 24.489
 spot_attenuation = 0.6
@@ -288,6 +291,7 @@ spot_angle = 33.18
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="lights" unique_id=58479936]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 21.425783, 8.47302, 12.161937)
+light_volumetric_fog_energy = 5.0
 shadow_enabled = true
 spot_range = 24.489
 spot_attenuation = 0.6
@@ -310,5 +314,14 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.16
 light_color = Color(1, 1, 0.6784314, 1)
 light_energy = 0.08
 distance_fade_enabled = true
+
+[node name="dust3" parent="." unique_id=540012478 instance=ExtResource("6_qu08u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.311722, 4.974963, 12.876189)
+
+[node name="dust2" parent="." unique_id=1335594892 instance=ExtResource("6_qu08u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4912574, 6.02913, 24.789124)
+
+[node name="dust" parent="." unique_id=1357460605 instance=ExtResource("6_qu08u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1781297, 10.0782995)
 
 [connection signal="body_entered" from="finisharea" to="." method="_on_finisharea_body_entered"]

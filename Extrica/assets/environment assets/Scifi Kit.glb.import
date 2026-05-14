@@ -36,8 +36,50 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
 materials/extract_format=0
-materials/extract_path=""
+materials/extract_path="res://assets/environment assets"
 _subresources={
+"materials": {
+"Accent": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Accent.tres",
+"use_external/path": "uid://b1gs2wgxsmn3p"
+},
+"Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Black.tres",
+"use_external/path": "uid://cxpyytas7xjrf"
+},
+"DarkAccent": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/DarkAccent.tres",
+"use_external/path": "uid://dr5phy4hgil16"
+},
+"DarkGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/DarkGrey.tres",
+"use_external/path": "uid://co68t1doq6m27"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Glass.tres",
+"use_external/path": "uid://c88t2okucrjeb"
+},
+"Light": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Light.tres",
+"use_external/path": "uid://biqlsv66alu1k"
+},
+"Main": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Main.tres",
+"use_external/path": "uid://svu3ucoysk2o"
+},
+"Pipes": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/environment assets/Pipes.tres",
+"use_external/path": "uid://ooy1tdxinchf"
+}
+},
 "meshes": {
 "Root Scene_Door_Single": {
 "generate/lightmap_uv": 0,
@@ -45,8 +87,14 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/environment assets/Sci Fi Staircase/door.tres",
+"save_to_file/fallback_path": "res://assets/environment assets/door.tres",
 "save_to_file/path": "uid://0cfmkpwvp8hw"
+}
+},
+"nodes": {
+"PATH:RootNode/Wall_Empty": {
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }
