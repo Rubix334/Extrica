@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://2oygy8c5q5ns" path="res://dust_particles.tscn" id="2_svq5b"]
 [ext_resource type="PackedScene" uid="uid://ckc4aykb160sx" path="res://jail_bars.tscn" id="3_rqot3"]
 [ext_resource type="PackedScene" uid="uid://cxfoo8tpd4duq" path="res://door.tscn" id="4_k4ij8"]
+[ext_resource type="PackedScene" uid="uid://cj5ewarjenka7" path="res://assets/environment assets/environment_Asset_scenes/wall_empty.tscn" id="5_gchmm"]
+[ext_resource type="ArrayMesh" uid="uid://bsfhsjetjxxhy" path="res://assets/environment assets/small_vent.tres" id="5_xl2ky"]
+[ext_resource type="PackedScene" uid="uid://c40j7nsb4u5wf" path="res://assets/environment assets/environment_Asset_scenes/door_wall.tscn" id="6_15wox"]
+[ext_resource type="PackedScene" uid="uid://galgog0b4qib" path="res://Light.tscn" id="8_kijmr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_svq5b"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,15 +21,18 @@ background_mode = 1
 background_color = Color(0.07450981, 0.039215688, 0.23137255, 1)
 background_energy_multiplier = 0.52
 sky = SubResource("Sky_covbg")
-ambient_light_source = 2
-ambient_light_color = Color(0.31142926, 0.19813204, 0.093257956, 1)
-ambient_light_energy = 0.13
+ambient_light_source = 1
+ambient_light_color = Color(0.2385692, 0.1520322, 0.10392926, 1)
+ambient_light_energy = 0.48
 tonemap_mode = 2
 glow_enabled = true
+glow_intensity = 0.63
+glow_bloom = 0.15
 fog_enabled = true
-fog_light_energy = 0.77
+fog_light_energy = 1.54
+fog_density = 0.005
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0202
+volumetric_fog_density = 0.0109
 
 [node name="Node3D" type="Node3D" unique_id=382981426]
 
@@ -262,51 +269,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.274237, 2.971527, -7.8257
 use_collision = true
 size = Vector3(1, 6.943054, 8.763916)
 
+[node name="MeshInstance3D" parent="hallway/backwall" unique_id=456510530 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-7.5053885e-07, -10, -5.751662e-07, 0, -4.3711393e-07, 13.158269, -17.170328, 4.371139e-07, 2.5141315e-14, 0.78160286, -2.3453717, 0.36835718)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="hallway/backwall" unique_id=311520709]
+transform = Transform3D(-2.1855692e-05, -499.99997, 0, 499.99997, -2.1855692e-05, 0, 0, 0, 499.99997, 0.88657, 1.6211877, 0.39205933)
+mesh = ExtResource("5_xl2ky")
+
 [node name="longwall" type="CSGBox3D" parent="hallway" unique_id=1026260489]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.746832, 2.971527, -11.594373)
 use_collision = true
 size = Vector3(1, 6.943054, 52.41127)
+
+[node name="MeshInstance3D" parent="hallway/longwall" unique_id=1200461271 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, 5.9617496)
+
+[node name="MeshInstance3D2" parent="hallway/longwall" unique_id=1588839234 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, 14.96175)
+
+[node name="MeshInstance3D3" parent="hallway/longwall" unique_id=2055323730 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513113, -2.7419693, 24.088612)
+
+[node name="MeshInstance3D4" parent="hallway/longwall" unique_id=60032981 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -3.1416864)
+
+[node name="MeshInstance3D5" parent="hallway/longwall" unique_id=1969606149 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -12.295697)
+
+[node name="MeshInstance3D6" parent="hallway/longwall" unique_id=1549683253 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -21.52235)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="hallway" unique_id=503871111]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30.803907, 2.971527, -3.4600344)
 use_collision = true
 size = Vector3(1, 6.943054, 8.763916)
 
+[node name="MeshInstance3D" parent="hallway/CSGBox3D4" unique_id=538287792 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, -0.42595863)
+
 [node name="roof" type="CSGBox3D" parent="hallway" unique_id=311556161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.430298, 6.41228, -7.5976205)
 size = Vector3(53.84253, 1, 8.442322)
 
-[node name="Node3D" parent="hallway" unique_id=1667466687 instance=ExtResource("4_k4ij8")]
+[node name="Door" parent="hallway" unique_id=1667466687 instance=ExtResource("4_k4ij8")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 34.795998, 0.27978897, -7.631023)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1236827641]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -13.591517, 5.5102153, -7.557173)
-light_energy = 1.94
-light_indirect_energy = 2.169
-light_volumetric_fog_energy = 4.865
-shadow_enabled = true
-spot_range = 12.009428
+[node name="doorWall" parent="hallway" unique_id=907598653 instance=ExtResource("6_15wox")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 34.38134, 0, -7.6387153)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1777878624]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.051054, 5.5102153, -7.557173)
-light_energy = 1.94
-light_indirect_energy = 2.169
-light_volumetric_fog_energy = 4.865
-shadow_enabled = true
-spot_range = 12.009428
+[node name="SpotLight3D" parent="hallway" unique_id=1345371268 instance=ExtResource("8_kijmr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.4069977, 5.5102153, -7.557173)
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=671422785]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12.948946, 5.5102153, -7.557173)
-light_energy = 1.94
-light_indirect_energy = 2.169
-light_volumetric_fog_energy = 4.865
-shadow_enabled = true
-spot_range = 12.009428
+[node name="SpotLight3D5" parent="hallway" unique_id=1617384817 instance=ExtResource("8_kijmr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.9372787, 5.5289636, -7.538012)
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="." unique_id=1402188234]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 25.469324, 5.5102153, -7.557173)
-light_energy = 1.94
-light_indirect_energy = 2.169
-light_volumetric_fog_energy = 4.865
-shadow_enabled = true
-spot_range = 12.009428
+[node name="SpotLight3D6" parent="hallway" unique_id=624912971 instance=ExtResource("8_kijmr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19.171265, 5.5289636, -7.538012)
+
+[node name="SpotLight3D7" parent="hallway" unique_id=460701358 instance=ExtResource("8_kijmr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.554605, 5.5289636, -7.538012)

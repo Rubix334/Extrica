@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://galgog0b4qib"]
+
+[ext_resource type="ArrayMesh" uid="uid://diyo3cy0oo5fy" path="res://assets/environment assets/light_fixture.tres" id="1_6dhwy"]
+[ext_resource type="PackedScene" uid="uid://2oygy8c5q5ns" path="res://dust_particles.tscn" id="1_v1p71"]
+
+[node name="SpotLight3D" type="SpotLight3D" unique_id=1345371268]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_energy = 1.94
+light_indirect_energy = 2.169
+light_volumetric_fog_energy = 4.865
+shadow_enabled = true
+spot_range = 12.009428
+
+[node name="Fixture" type="MeshInstance3D" parent="." unique_id=1520247989]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -3.9944656e-08, 0.9138272)
+mesh = ExtResource("1_6dhwy")
+
+[node name="Node3D" parent="." unique_id=540012478 instance=ExtResource("1_v1p71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, -3.351757)

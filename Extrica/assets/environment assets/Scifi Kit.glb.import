@@ -81,6 +81,24 @@ _subresources={
 }
 },
 "meshes": {
+"Root Scene_Details_Vent_4": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/small_vent.tres",
+"save_to_file/path": "uid://bqaqsqx5g5nrm"
+},
+"Root Scene_DoorSingle_Wall_SideA": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/door_wall.tres",
+"save_to_file/path": "uid://ba8ogowh7dadt"
+},
 "Root Scene_Door_Single": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
@@ -89,6 +107,15 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/environment assets/door.tres",
 "save_to_file/path": "uid://0cfmkpwvp8hw"
+},
+"Root Scene_Wall_Empty": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/empty_wall.tres",
+"save_to_file/path": "uid://chk5gqb63g7yy"
 }
 },
 "nodes": {
