@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6giu4a8687a2"]
 
+[ext_resource type="Script" uid="uid://t72qol781ddg" path="res://Level_scenes/tutorial_level.gd" id="1_722jy"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_g2ary"]
 [ext_resource type="PackedScene" uid="uid://2oygy8c5q5ns" path="res://dust_particles.tscn" id="2_svq5b"]
 [ext_resource type="PackedScene" uid="uid://ckc4aykb160sx" path="res://jail_bars.tscn" id="3_rqot3"]
@@ -8,6 +9,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bsfhsjetjxxhy" path="res://assets/environment assets/small_vent.tres" id="5_xl2ky"]
 [ext_resource type="PackedScene" uid="uid://c40j7nsb4u5wf" path="res://assets/environment assets/environment_Asset_scenes/door_wall.tscn" id="6_15wox"]
 [ext_resource type="PackedScene" uid="uid://galgog0b4qib" path="res://Light.tscn" id="8_kijmr"]
+[ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="10_p4nbr"]
+[ext_resource type="PackedScene" uid="uid://bsrg5ufmybpw5" path="res://Pop-up tutorial.tscn" id="11_p4nbr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_svq5b"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -34,14 +37,24 @@ fog_density = 0.005
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0109
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx35d"]
+albedo_color = Color(0.27058825, 0.28627452, 0.29803923, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_syjp2"]
+
 [node name="Node3D" type="Node3D" unique_id=382981426]
+script = ExtResource("1_722jy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=449190340]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 13.065104, 0)
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=752420014]
 environment = SubResource("Environment_rqot3")
+
+[node name="tutorial_popup" parent="." unique_id=175072876 instance=ExtResource("11_p4nbr")]
 
 [node name="player" parent="." unique_id=277564241 instance=ExtResource("1_g2ary")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3121984, -7.998276)
@@ -257,74 +270,162 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.5
 use_collision = true
 size = Vector3(0.9493408, 6.679138, 1)
 
-[node name="hallway" type="Node3D" parent="." unique_id=206352021]
+[node name="cell_hallway" type="Node3D" parent="." unique_id=206352021]
 
-[node name="floor" type="CSGBox3D" parent="hallway" unique_id=403460216]
+[node name="floor" type="CSGBox3D" parent="cell_hallway" unique_id=403460216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.048149, -0.254593, -7.3737884)
 use_collision = true
 size = Vector3(51.83516, 1, 7.734741)
 
-[node name="backwall" type="CSGBox3D" parent="hallway" unique_id=1526075879]
+[node name="backwall" type="CSGBox3D" parent="cell_hallway" unique_id=1526075879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.274237, 2.971527, -7.8257923)
 use_collision = true
 size = Vector3(1, 6.943054, 8.763916)
 
-[node name="MeshInstance3D" parent="hallway/backwall" unique_id=456510530 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D" parent="cell_hallway/backwall" unique_id=456510530 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-7.5053885e-07, -10, -5.751662e-07, 0, -4.3711393e-07, 13.158269, -17.170328, 4.371139e-07, 2.5141315e-14, 0.78160286, -2.3453717, 0.36835718)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="hallway/backwall" unique_id=311520709]
-transform = Transform3D(-2.1855692e-05, -499.99997, 0, 499.99997, -2.1855692e-05, 0, 0, 0, 499.99997, 0.88657, 1.6211877, 0.39205933)
+[node name="vent" type="MeshInstance3D" parent="cell_hallway/backwall" unique_id=311520709]
+transform = Transform3D(-2.1855692e-05, -499.99997, 0, 499.99997, -2.1855692e-05, 0, 0, 0, 499.99997, 0.7785015, 1.6211877, 0.39205933)
 mesh = ExtResource("5_xl2ky")
 
-[node name="longwall" type="CSGBox3D" parent="hallway" unique_id=1026260489]
+[node name="SpotLight3D" type="SpotLight3D" parent="cell_hallway/backwall/vent" unique_id=2094733422]
+transform = Transform3D(0.0018523615, 6.132987e-05, 0.0007516622, -0.0007534919, 0.00023439249, 0.0018377461, -3.173761e-05, -0.0019852708, 0.00024019557, 0, 0.00020173565, 0.0002465574)
+light_color = Color(1, 0.49019608, 0.2901961, 1)
+light_energy = 0.423
+light_volumetric_fog_energy = 16.0
+light_size = 0.149
+shadow_enabled = true
+shadow_blur = 6.644
+distance_fade_enabled = true
+spot_range = 14.71
+spot_attenuation = 0.04
+spot_angle = 76.66
+
+[node name="Node3D" parent="cell_hallway/backwall" unique_id=1047054815 instance=ExtResource("2_svq5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.293951, 1.6743131, 0.47064543)
+
+[node name="longwall" type="CSGBox3D" parent="cell_hallway" unique_id=1026260489]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.746832, 2.971527, -11.594373)
 use_collision = true
 size = Vector3(1, 6.943054, 52.41127)
 
-[node name="MeshInstance3D" parent="hallway/longwall" unique_id=1200461271 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D" parent="cell_hallway/longwall" unique_id=1200461271 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, 5.9617496)
 
-[node name="MeshInstance3D2" parent="hallway/longwall" unique_id=1588839234 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D2" parent="cell_hallway/longwall" unique_id=1588839234 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, 14.96175)
 
-[node name="MeshInstance3D3" parent="hallway/longwall" unique_id=2055323730 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D3" parent="cell_hallway/longwall" unique_id=2055323730 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513113, -2.7419693, 24.088612)
 
-[node name="MeshInstance3D4" parent="hallway/longwall" unique_id=60032981 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D4" parent="cell_hallway/longwall" unique_id=60032981 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -3.1416864)
 
-[node name="MeshInstance3D5" parent="hallway/longwall" unique_id=1969606149 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D5" parent="cell_hallway/longwall" unique_id=1969606149 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -12.295697)
 
-[node name="MeshInstance3D6" parent="hallway/longwall" unique_id=1549683253 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D6" parent="cell_hallway/longwall" unique_id=1549683253 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.7513094, -2.7419693, -21.52235)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="hallway" unique_id=503871111]
+[node name="CSGBox3D4" type="CSGBox3D" parent="cell_hallway" unique_id=503871111]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30.803907, 2.971527, -3.4600344)
 use_collision = true
 size = Vector3(1, 6.943054, 8.763916)
 
-[node name="MeshInstance3D" parent="hallway/CSGBox3D4" unique_id=538287792 instance=ExtResource("5_gchmm")]
+[node name="MeshInstance3D" parent="cell_hallway/CSGBox3D4" unique_id=538287792 instance=ExtResource("5_gchmm")]
 transform = Transform3D(-1.002601e-06, -10, -6.1587065e-07, 0, -4.371139e-07, 14.0894785, -22.936838, 4.371139e-07, 2.692056e-14, 0.75131035, -2.7419693, -0.42595863)
 
-[node name="roof" type="CSGBox3D" parent="hallway" unique_id=311556161]
+[node name="roof" type="CSGBox3D" parent="cell_hallway" unique_id=311556161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.430298, 6.41228, -7.5976205)
 size = Vector3(53.84253, 1, 8.442322)
 
-[node name="Door" parent="hallway" unique_id=1667466687 instance=ExtResource("4_k4ij8")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 34.795998, 0.27978897, -7.631023)
+[node name="Door" parent="cell_hallway" unique_id=1667466687 instance=ExtResource("4_k4ij8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 34.953045, 0.27978897, -7.631023)
 
-[node name="doorWall" parent="hallway" unique_id=907598653 instance=ExtResource("6_15wox")]
+[node name="doorWall" parent="cell_hallway" unique_id=907598653 instance=ExtResource("6_15wox")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 34.38134, 0, -7.6387153)
 
-[node name="SpotLight3D" parent="hallway" unique_id=1345371268 instance=ExtResource("8_kijmr")]
+[node name="MeshInstance3D2" parent="cell_hallway/doorWall" unique_id=1569274814 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, 3.4715753, -0.017808259, 0.00283432)
+
+[node name="MeshInstance3D3" parent="cell_hallway/doorWall" unique_id=405826601 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, -3.5047874, -0.017808259, 0.00283432)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cell_hallway/doorWall" unique_id=495677615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046555042, 5.203211, -0.50901794)
+use_collision = true
+size = Vector3(7.1720276, 1.7336426, 1.4275818)
+material = SubResource("StandardMaterial3D_vx35d")
+
+[node name="SpotLight3D" parent="cell_hallway" unique_id=1345371268 instance=ExtResource("8_kijmr")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.4069977, 5.5102153, -7.557173)
 
-[node name="SpotLight3D5" parent="hallway" unique_id=1617384817 instance=ExtResource("8_kijmr")]
+[node name="SpotLight3D5" parent="cell_hallway" unique_id=1617384817 instance=ExtResource("8_kijmr")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.9372787, 5.5289636, -7.538012)
 
-[node name="SpotLight3D6" parent="hallway" unique_id=624912971 instance=ExtResource("8_kijmr")]
+[node name="SpotLight3D6" parent="cell_hallway" unique_id=624912971 instance=ExtResource("8_kijmr")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 19.171265, 5.5289636, -7.538012)
 
-[node name="SpotLight3D7" parent="hallway" unique_id=460701358 instance=ExtResource("8_kijmr")]
+[node name="SpotLight3D7" parent="cell_hallway" unique_id=460701358 instance=ExtResource("8_kijmr")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.554605, 5.5289636, -7.538012)
+
+[node name="outer_hallway" type="Node3D" parent="." unique_id=226884329]
+
+[node name="lockeddoorWall" parent="outer_hallway" unique_id=1676738587 instance=ExtResource("6_15wox")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 44.015297, 0, -7.6387153)
+
+[node name="MeshInstance3D2" parent="outer_hallway/lockeddoorWall" unique_id=1851883762 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, 3.4715753, -0.017808259, 0.00283432)
+
+[node name="MeshInstance3D3" parent="outer_hallway/lockeddoorWall" unique_id=1284029122 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, -3.5047874, -0.017808259, 0.00283432)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="outer_hallway/lockeddoorWall" unique_id=865064658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07964659, 5.203211, -0.50901794)
+use_collision = true
+size = Vector3(10.257362, 1.7336426, 1.4275818)
+material = SubResource("StandardMaterial3D_vx35d")
+
+[node name="Node3D" parent="outer_hallway/lockeddoorWall" unique_id=1711329525 instance=ExtResource("4_k4ij8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23179245)
+locked = true
+
+[node name="floor" type="CSGBox3D" parent="outer_hallway" unique_id=829684151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.510464, -0.2522366, -23.116503)
+use_collision = true
+size = Vector3(9.228821, 1, 39.701645)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="outer_hallway" unique_id=185918121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.24012, 0.8601041, -11.938185)
+use_collision = true
+size = Vector3(1.5620117, 1.3138428, 1.438324)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="outer_hallway" unique_id=868809186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.27364, 1.0441861, -10.518193)
+use_collision = true
+radius = 0.90234375
+height = 2.368164
+
+[node name="s" parent="outer_hallway" unique_id=694759227 instance=ExtResource("5_gchmm")]
+transform = Transform3D(-4.371139e-07, -10, -4.3711393e-07, 1.5529405e-21, -4.3711393e-07, 10, -10, 4.371139e-07, 1.910686e-14, 35.45787, 0.22393775, -4.7782803)
+
+[node name="EnemyNPC" parent="." unique_id=2018420786 node_paths=PackedStringArray("player", "patrol_points") instance=ExtResource("10_p4nbr")]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.81458, 1.2841132, -16.594898)
+player = NodePath("../player")
+patrol_points = [NodePath("../enemy_patrol_markers/Marker3D")]
+
+[node name="enemy_patrol_markers" type="Node" parent="." unique_id=496252677]
+
+[node name="Marker3D" type="Marker3D" parent="enemy_patrol_markers" unique_id=2091920642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5452, 1.0798976, -38.180626)
+
+[node name="outer_hallway_area" type="Area3D" parent="." unique_id=1487844846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.561237, 0, -7.429579)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="outer_hallway_area" unique_id=1033039614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14865875, 1.4418576, -0.12394667)
+shape = SubResource("BoxShape3D_syjp2")
+
+[connection signal="body_entered" from="outer_hallway_area" to="." method="_on_outer_hallway_area_body_entered"]

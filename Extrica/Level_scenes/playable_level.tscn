@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ml46ns44jck3"]
 
-[ext_resource type="Script" uid="uid://baciixpe1n8ev" path="res://playable_level.gd" id="1_3qcqn"]
+[ext_resource type="Script" uid="uid://baciixpe1n8ev" path="res://Level_scenes/playable_level.gd" id="1_3qcqn"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_gpogn"]
 [ext_resource type="PackedScene" uid="uid://deyf5v85doe8d" path="res://enemy.tscn" id="2_covbg"]
 [ext_resource type="PackedScene" uid="uid://bop3dp2337m7x" path="res://sec_cam.tscn" id="2_mirvv"]
@@ -141,9 +141,9 @@ use_collision = true
 size = Vector3(10, 1.1338806, 1)
 
 [node name="halfwall2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1102410177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.635788, 0.9614496, 22.77762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.635788, 0.87759495, 22.77762)
 use_collision = true
-size = Vector3(7.10437, 1.183075, 1)
+size = Vector3(7.10437, 1.0153656, 1)
 
 [node name="debris" type="Node3D" parent="NavigationRegion3D" unique_id=753592600]
 

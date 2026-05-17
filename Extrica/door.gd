@@ -21,13 +21,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		if not locked:
 			var tween = get_tree().create_tween()
-			tween.tween_property($MeshInstance3D,"position",Vector3(2,-0.08,0.3),1)
+			tween.tween_property($MeshInstance3D,"position",Vector3(2,-0.08,0.329),1)
 			var tween2 = get_tree().create_tween()
-			tween2.tween_property($CollisionShape3D,"position",Vector3(2,1.287,-0.098),1)
+			tween2.tween_property($CollisionShape3D,"position",Vector3(2,1.287,-0.09),1)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property($MeshInstance3D,"position",Vector3(0,0,0),1)
+	tween.tween_property($MeshInstance3D,"position",Vector3(0,-0.08,0.329),1)
 	var tween2 = get_tree().create_tween()
-	tween2.tween_property($CollisionShape3D,"position",Vector3(0,0,0),1)
+	tween2.tween_property($CollisionShape3D,"position",Vector3(0,1.287,-0.09),1)

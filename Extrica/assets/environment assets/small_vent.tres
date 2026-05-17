@@ -24,12 +24,10 @@ metadata/extras = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr3g3"]
 resource_name = "Black"
-albedo_color = Color(0.69148654, 0.15107772, 0.15810603, 1)
+albedo_color = Color(0.6837489, 0.29939032, 0.14337447, 1)
 metallic = 0.4
 emission_enabled = true
-emission = Color(0.62158865, 2.201982e-06, 9.62615e-08, 1)
-emission_energy_multiplier = 9.05
-backlight_enabled = true
+emission = Color(0.68235296, 0.29803923, 0.14509805, 1)
 metadata/extras = {
 "fromFBX": {
 "isTruePBR": false,

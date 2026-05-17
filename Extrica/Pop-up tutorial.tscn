@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bsrg5ufmybpw5"]
+
+[ext_resource type="Script" uid="uid://cp8skw1ybq4kh" path="res://pop_up_tutorial.gd" id="1_jyk5n"]
+
+[node name="Control" type="Control" unique_id=175072876]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jyk5n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=967646757]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -285.0
+offset_right = 21.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel" type="Label" parent="VBoxContainer" unique_id=1675733927]
+layout_mode = 2
+text = "This is a test 
+"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1415981933]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -335.0
+offset_right = 250.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(2.2862106e-07, 0.20286775, 0.20367223, 0.42745098)
