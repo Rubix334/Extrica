@@ -92,8 +92,23 @@ func _physics_process(delta: float) -> void:
 			_rotate_camera(delta)
 			move_and_slide()
 			$Crosshair.visible = true
+			if not sprinting:
+				#add lean
+				pass
 		else:
 			$Crosshair.visible = false
+
+func lean_R():
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween.tween_property(camera,"position",Vector3(0.3,0,0),0.5)
+	tween.tween_property(camera,"rotation",Vector3(0,0,-7),0.5)
+
+func lean_L():
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween.tween_property(camera,"position",Vector3(-0.3,0,0),0.5)
+	tween.tween_property(camera,"rotation",Vector3(0,0,7),0.5)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

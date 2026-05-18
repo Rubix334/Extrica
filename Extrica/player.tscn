@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://c76gw4uaxceip" path="res://player_audio.gd" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://3nhvy0ivvdef" path="res://GameOverHUD.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://br8biyf5s7mvh" path="res://player_hud.tscn" id="4_hqtel"]
-[ext_resource type="Script" uid="uid://cap7jhbdbqn1l" path="res://player_hud.gd" id="5_sweqy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
 
@@ -163,7 +162,6 @@ visible = false
 shape = SubResource("CylinderShape3D_i3pqv")
 
 [node name="player_hud" parent="." unique_id=1077296290 instance=ExtResource("4_hqtel")]
-script = ExtResource("5_sweqy")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="AudioEmissionArea" to="." method="_on_audio_emission_area_body_entered"]
