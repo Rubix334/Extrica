@@ -409,8 +409,8 @@ height = 2.368164
 transform = Transform3D(-4.371139e-07, -10, -4.3711393e-07, 1.5529405e-21, -4.3711393e-07, 10, -10, 4.371139e-07, 1.910686e-14, 35.342514, 0.22393775, -4.7782803)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="outer_hallway" unique_id=1593718716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.857445, -0.252, -37.384174)
-size = Vector3(20.115112, 1, 9.359619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.255363, -0.252, -37.384174)
+size = Vector3(23.319275, 1, 9.359619)
 
 [node name="longwall" type="CSGBox3D" parent="outer_hallway" unique_id=871019509]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 0.7213419, 0, -8.742278e-08, 0, -1, 44.79451, 1.9003806, -38.50203)
@@ -461,6 +461,21 @@ transform = Transform3D(20.224752, 1.1920924e-06, 8.906652e-14, -3.1407832e-21, 
 
 [node name="MeshInstance3D14" parent="outer_hallway" unique_id=1731849413 instance=ExtResource("5_gchmm")]
 transform = Transform3D(23.92824, 1.1920924e-06, 8.906652e-14, -3.7159126e-21, -4.3711373e-07, 10.16333, 2.8524685e-06, -9.999996, -4.4425335e-07, 39.55406, 0.2373625, -42.09449)
+
+[node name="EnddoorWall" parent="outer_hallway" unique_id=801846260 instance=ExtResource("6_15wox")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 21.553143, 0, -37.56492)
+
+[node name="MeshInstance3D2" parent="outer_hallway/EnddoorWall" unique_id=385241873 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, 3.4715753, -0.017808259, 0.00283432)
+
+[node name="MeshInstance3D3" parent="outer_hallway/EnddoorWall" unique_id=934379601 instance=ExtResource("5_gchmm")]
+transform = Transform3D(7.5718155, 0, 3.6152586e-14, -1.1758577e-21, -4.3711393e-07, 10.176048, 0, -10, -4.4480925e-07, -3.5047874, -0.017808259, 0.00283432)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="outer_hallway/EnddoorWall" unique_id=1967068401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046555042, 5.203211, -0.50901794)
+use_collision = true
+size = Vector3(7.1720276, 1.7336426, 1.4275818)
+material = SubResource("StandardMaterial3D_vx35d")
 
 [node name="EnemyNPC" parent="." unique_id=2018420786 node_paths=PackedStringArray("player", "patrol_points") instance=ExtResource("10_p4nbr")]
 process_mode = 1

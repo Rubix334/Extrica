@@ -59,6 +59,11 @@ func _process(delta: float) -> void:
 					obj.glow_mesh.visible = true
 					if Input.is_action_just_pressed("mouse1"):
 						obj.change_lock_status()
+						if obj.locked == false:
+							hud.door.text = "door is unlocked"
+						else: 
+							hud.door.text = "door is locked"
+						hud.door.visible = true
 				
 	else:
 		hud.visible = false

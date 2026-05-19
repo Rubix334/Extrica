@@ -94,21 +94,36 @@ func _physics_process(delta: float) -> void:
 			$Crosshair.visible = true
 			if not sprinting:
 				#add lean
-				pass
+				if Input.is_action_pressed("E"):
+					lean_R()
+				elif Input.is_action_just_released("E"):
+					unlean()
+				if Input.is_action_pressed("Q"):
+					lean_L()
+				elif Input.is_action_just_released("Q"):
+					unlean()
 		else:
 			$Crosshair.visible = false
 
 func lean_R():
 	var tween = get_tree().create_tween()
 	var tween2 = get_tree().create_tween()
-	tween.tween_property(camera,"position",Vector3(0.3,0,0),0.5)
-	tween.tween_property(camera,"rotation",Vector3(0,0,-7),0.5)
+	var angle = lerp_angle(0,-3,0.05)
+	tween.tween_property(camera,"position",Vector3(1,camera.position.y,0),0.3)
+	tween.parallel().tween_property(camera,"rotation:z",angle,0.3)
 
 func lean_L():
 	var tween = get_tree().create_tween()
 	var tween2 = get_tree().create_tween()
-	tween.tween_property(camera,"position",Vector3(-0.3,0,0),0.5)
-	tween.tween_property(camera,"rotation",Vector3(0,0,7),0.5)
+	var angle = lerp_angle(0,3,0.05)
+	tween.tween_property(camera,"position",Vector3(-1,camera.position.y,0),0.3)
+	tween.parallel().tween_property(camera,"rotation:z",angle,0.3)
+
+func unlean():
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween.tween_property(camera,"position",Vector3(0,camera.position.y,0),0.3)
+	tween.parallel().tween_property(camera,"rotation",Vector3(camera.rotation.x,camera.rotation.y,0),0.3)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

@@ -29,6 +29,10 @@ font_size = 50
 font = ExtResource("3_c575w")
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_h21rv"]
+font = ExtResource("3_c575w")
+font_size = 30
+
 [sub_resource type="Animation" id="Animation_6f24i"]
 length = 0.001
 tracks/0/type = "value"
@@ -38,6 +42,18 @@ tracks/0/path = NodePath("noisemaker:label_settings:font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -60,10 +76,27 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_we87s"]
+resource_name = "fade out_2"
+length = 2.7333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 2.7333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fkj6n"]
 _data = {
 &"RESET": SubResource("Animation_6f24i"),
-&"fade out": SubResource("Animation_c575w")
+&"fade out": SubResource("Animation_c575w"),
+&"fade out_2": SubResource("Animation_we87s")
 }
 
 [node name="Control" type="Control" unique_id=1859975273]
@@ -262,6 +295,7 @@ label_settings = SubResource("LabelSettings_6f24i")
 autostart = true
 
 [node name="noisemaker" type="Label" parent="." unique_id=1133948766]
+visible = false
 layout_mode = 0
 offset_left = 415.0
 offset_top = 384.0
@@ -269,6 +303,17 @@ offset_right = 738.0
 offset_bottom = 426.0
 text = "noisemaker turned on"
 label_settings = SubResource("LabelSettings_c575w")
+horizontal_alignment = 1
+
+[node name="door" type="Label" parent="." unique_id=774616231]
+visible = false
+layout_mode = 0
+offset_left = 415.0
+offset_top = 384.0
+offset_right = 738.0
+offset_bottom = 426.0
+text = "Door is "
+label_settings = SubResource("LabelSettings_h21rv")
 horizontal_alignment = 1
 
 [node name="AnimationTree" type="AnimationPlayer" parent="." unique_id=1140666541]

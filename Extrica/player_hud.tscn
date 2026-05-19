@@ -41,6 +41,6 @@ offset_left = 408.0
 offset_top = 609.0
 offset_right = 739.0
 offset_bottom = 646.0
-text = "hold Q to hack the camera"
+text = "hold F to hack the camera"
 label_settings = SubResource("LabelSettings_5sskr")
 horizontal_alignment = 1

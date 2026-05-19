@@ -5,6 +5,7 @@ extends Control
 @onready var timer: Timer = $Timer
 @onready var noisemaker: Label = $noisemaker
 @onready var ani: AnimationPlayer = $AnimationTree
+@onready var door: Label = $door
 
 var sec = 0
 var min = 0
@@ -25,8 +26,13 @@ func _process(delta: float) -> void:
 		time_label.text = "00:0"+str(min)+":0"+str(sec)
 	if noisemaker.visible==true:
 		ani.play("fade out")
-		await get_tree().create_timer(2.5).timeout
+		await get_tree().create_timer(3).timeout
 		noisemaker.visible=false
+		ani.play("RESET")
+	if door.visible==true:
+		ani.play("fade out_2")
+		await get_tree().create_timer(3).timeout
+		door.visible=false
 		ani.play("RESET")
 
 func _on_timer_timeout() -> void:
