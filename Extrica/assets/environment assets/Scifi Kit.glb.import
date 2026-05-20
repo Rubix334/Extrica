@@ -81,14 +81,32 @@ _subresources={
 }
 },
 "meshes": {
+"Root Scene_Column_2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/pillar.tres",
+"save_to_file/path": "uid://b5iiue3y06yk6"
+},
 "Root Scene_Details_Vent_4": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/environment assets/small_vent.tres",
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/small_vent.tres",
 "save_to_file/path": "uid://bqaqsqx5g5nrm"
+},
+"Root Scene_DoorDoubleLong_Wall_SideA": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/doubledoor_wall.tres",
+"save_to_file/path": "uid://bw5foswiyf3b5"
 },
 "Root Scene_DoorSingle_Wall_SideA": {
 "generate/lightmap_uv": 0,
@@ -107,6 +125,42 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/environment assets/door.tres",
 "save_to_file/path": "uid://0cfmkpwvp8hw"
+},
+"Root Scene_Props_ContainerFull": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/chest.tres",
+"save_to_file/path": "uid://b6cd8n0sygkil"
+},
+"Root Scene_Props_Crate": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/crate.tres",
+"save_to_file/path": "uid://f13vow4fwsnp"
+},
+"Root Scene_Props_CrateLong": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/crate_long.tres",
+"save_to_file/path": "uid://bcuumgntb75st"
+},
+"Root Scene_Props_Shelf_Tall": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment assets/Prop_Meshes/shelf.tres",
+"save_to_file/path": "uid://dkw07fiqgehuc"
 },
 "Root Scene_Wall_Empty": {
 "generate/lightmap_uv": 0,

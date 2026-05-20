@@ -2,6 +2,7 @@ extends Node3D
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var footsteps : Array = Global.load_audio_files("res://assets/metal_steps_48k24b/")
+var ambient_music = preload("res://assets/sound/07 - Intruder 2.mp3")
 
 func _ready() -> void:
 	change_vol(24,"footstep")
@@ -36,6 +37,8 @@ func play_sfx(sfx_name : String):
 	if sfx_name == "footsteps":
 		var rand = randf_range(0,footsteps.size())
 		stream = footsteps[rand]
+	if sfx_name == "ambient_music":
+		stream = ambient_music
 	else:
 		print("invalid sfx name")
 		return

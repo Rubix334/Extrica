@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6o3poo5vowfd"]
+
+[ext_resource type="ArrayMesh" uid="uid://prcq66lbfh0p" path="res://assets/environment assets/Prop_Meshes/pillar.tres" id="1_211t1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_211t1"]
+height = 0.045532227
+radius = 0.00390625
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=329408533]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
+mesh = ExtResource("1_211t1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=684863192]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 9.577874e-10, 0.021911621)
+shape = SubResource("CylinderShape3D_211t1")

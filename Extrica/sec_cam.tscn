@@ -29,6 +29,7 @@ script = ExtResource("1_8ova0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=107147461]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+cast_shadow = 0
 mesh = ExtResource("1_2o1ua")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ova0")
 surface_material_override/1 = SubResource("StandardMaterial3D_u6shl")
@@ -65,3 +66,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 show_percentage = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=613483589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0017246008, 0.15056658, -0.26053882)
+omni_range = 0.85
+omni_attenuation = 0.54
