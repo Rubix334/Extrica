@@ -82,7 +82,7 @@ shadow_reverse_cull_face = true
 environment = SubResource("Environment_rqot3")
 
 [node name="player" parent="." unique_id=277564241 instance=ExtResource("1_g2ary")]
-transform = Transform3D(-0.09047629, 0, -0.9958987, 0, 1, 0, 0.9958987, 0, -0.09047629, 1.5386219, 1.3121984, -7.23092)
+transform = Transform3D(-0.09047629, 0, -0.9958987, 0, 1, 0, 0.9958987, 0, -0.09047629, -8.767927, 1.3121984, -7.7159777)
 
 [node name="Cell" type="Node3D" parent="." unique_id=1430250388]
 
@@ -521,10 +521,6 @@ transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06
 [node name="pillar2" parent="NavigationRegion3D/outer_hallway" unique_id=1034684699 instance=ExtResource("10_sibiy")]
 transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 35.39824, 0, -24.375618)
 
-[node name="Node3D" parent="NavigationRegion3D/outer_hallway" unique_id=2140455202 instance=ExtResource("11_brvqc")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 31.14482, 2.2093184, -21.497778)
-sound_range = 20.0
-
 [node name="seccam" parent="NavigationRegion3D/outer_hallway" unique_id=670971705 node_paths=PackedStringArray("player") instance=ExtResource("12_brvqc")]
 transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.8, 0, 0.7, 0, -3.059797e-08, 43.72034, 3.1251018, -21.81331)
 player = NodePath("../../../player")
@@ -627,8 +623,11 @@ spot_angle = 76.66
 [node name="EnemyNPC" parent="." unique_id=2018420786 node_paths=PackedStringArray("player", "patrol_points") instance=ExtResource("10_p4nbr")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.81458, 1.2841132, -16.594898)
+collision_layer = 11
+collision_mask = 11
 player = NodePath("../player")
 patrol_points = [NodePath("../enemy_patrol_markers/Marker3D"), NodePath("../enemy_patrol_markers/Marker3D2")]
+investigate_wait_time = 5.0
 
 [node name="enemy_patrol_markers" type="Node" parent="." unique_id=496252677]
 
@@ -667,6 +666,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.000626, 1.0415342, -36.394
 [node name="CollisionShape3D" type="CollisionShape3D" parent="endarea" unique_id=2090068823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7483387, 0, -0.76586914)
 shape = SubResource("BoxShape3D_e52uc")
+
+[node name="Node3D" parent="." unique_id=2140455202 instance=ExtResource("11_brvqc")]
+transform = Transform3D(-0.03953877, 0, 0.99921805, 0, 1, 0, -0.99921805, 0, -0.03953877, 31.13035, 2.26384, -21.617483)
+sound_range = 8.0
 
 [connection signal="body_entered" from="outer_hallway_area" to="." method="_on_outer_hallway_area_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

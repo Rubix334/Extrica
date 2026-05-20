@@ -8,7 +8,7 @@ func _ready() -> void:
 	enemy_npc.set_physics_process(false)
 	tutorial_popup.animate_on_screen()
 	AudioManager.play_sfx("ambient_music")
-
+	$Node3D.sound_range = 15
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

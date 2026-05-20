@@ -21,7 +21,7 @@ func animate_on_screen():
 func animate_off_screen():
 	if on_screen: 
 		var tween = get_tree().create_tween()
-		tween.tween_property(self,"position",Vector2(0,370),0.5).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self,"position",Vector2(0,1000),0.5).set_ease(Tween.EASE_IN_OUT)
 		on_screen = false
 
 func change_text(text:String):

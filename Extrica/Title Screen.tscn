@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c8d8h7bdvfojw"]
+
+[ext_resource type="Script" uid="uid://chxy7knvb2qlj" path="res://title_screen.gd" id="1_0ijhy"]
+[ext_resource type="FontFile" uid="uid://2se2tpsyvngl" path="res://assets/Futuralistic-PVavP.ttf" id="1_rpgwi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0ijhy"]
+load_path = "res://.godot/imported/background.webp-97b45b7efb673be4dcae66bed2b07e57.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ijhy"]
+font = ExtResource("1_rpgwi")
+font_size = 400
+
+[node name="Control" type="Control" unique_id=1240990991]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ijhy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=159412711]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_0ijhy")
+
+[node name="Label" type="Label" parent="." unique_id=242202066]
+layout_mode = 1
+offset_left = 79.0
+offset_right = 1134.0
+offset_bottom = 418.0
+text = "Extrica"
+label_settings = SubResource("LabelSettings_0ijhy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1005581360]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -89.5
+offset_right = 150.0
+offset_bottom = 89.5
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=205434402]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rpgwi")
+theme_override_font_sizes/font_size = 70
+text = "Play"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=455878304]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rpgwi")
+theme_override_font_sizes/font_size = 70
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

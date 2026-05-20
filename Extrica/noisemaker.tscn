@@ -28,6 +28,7 @@ height = 5.088684
 
 [node name="Node3D" type="StaticBody3D" unique_id=2140455202 groups=["hackable"]]
 script = ExtResource("1_vymm7")
+sound_range = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1082038423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05961609, -0.091812134, 0.0060920715)
@@ -45,7 +46,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6o33y")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1830924600]
 collision_layer = 8
-collision_mask = 9
+collision_mask = 8
 input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=520928007]

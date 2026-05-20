@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Extrica"
-run/main_scene="uid://ml46ns44jck3"
+run/main_scene="uid://c8d8h7bdvfojw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SecCamManager="*uid://kf28eduyy2p2"
 Global="*uid://ca17ijolul2ti"
 AudioManager="*uid://dm1qwndrlxwt4"
+
+[display]
+
+window/size/mode=3
 
 [global_group]
 
